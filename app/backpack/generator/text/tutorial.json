@@ -1,0 +1,17 @@
+{
+    "tutorial": [
+    {
+    "step": 1,
+    "title": "Input Text",
+    "description": "Enter your text, describing the image you envision."
+    },
+    {
+        "step": 2,
+        "title": "Generate and Review",
+        "description": "Click 'Generate' to create the image and review it before saving or declining. Keep in mind that each render costs Render Points."
+    },
+    { "step": 3, "title": "Save or Decline", "description": "If you're satisfied with the generated image, save it to your backpack. If not, decline it and request another rendering." },
+    { "step": 4, "title": "Render Points", "description": "Remember, each render consumes Render Points, which can be earned by interactions with other users or bought in our shop." },
+    { "step": 5, "title": "Unleash Your Creativity", "description": "Experiment with different descriptions, refine your text, and explore the power of transforming words into visual representations." }
+    ]
+}
