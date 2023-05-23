@@ -4,11 +4,10 @@ import { Search } from "./components/Search";
 import { setBrowseImages } from "@/common/redux/slices/imagesSlice";
 
 export default async function BrowseImages() {
-  const req = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/images`, {
+  const req = await fetch("https://decocanva.com/api/images", {
     headers: {
-      authorization: "5gingonqn21indzfafwqggzxghe",
+      authorization: process.env.API_KEY!,
     },
-    method: "GET",
   });
   const data = await req.json();
   store.dispatch(setBrowseImages(data));
