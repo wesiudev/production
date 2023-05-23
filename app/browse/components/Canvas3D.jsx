@@ -55,7 +55,7 @@ const Common = dynamic(
 export default function Canvas3D({ image }) {
   const dispatch = useDispatch();
   return (
-    <div className="min-h-screen w-full z-50 bg-white rounded-md sm:min-h-0 sm:h-max sm:p-4 sm:pt-1 px-3 overflow-y-scroll scrollbarBlack overflow-x-hidden">
+    <div className="min-h-screen w-full z-50 bg-white rounded-md sm:min-h-0 sm:h-max sm:p-4 sm:pr-0 sm:pt-1 px-3 overflow-y-scroll scrollbarBlack overflow-x-hidden">
       <div className="pb-6 pt-6 sm:pt-3 flex flex-row justify-between w-full items-center ">
         <span className=" pl-1 text-2xl flex flex-row items-center">
           <FaImage className="mr-1" />
@@ -69,7 +69,7 @@ export default function Canvas3D({ image }) {
           <FaWindowClose className="h-8 w-8 mr-1" />
         </button>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-3">
         <div className="bg-purple-950">
           <div className="w-full h-full relative">
             <Hero />

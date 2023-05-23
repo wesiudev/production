@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { Layout } from "./dom/Layout";
 import { RootState } from "@/common/redux/store";
 import Canvas3D from "../components/Canvas3D";
-import { useState } from "react";
 export const ImagePreview = () => {
   const { currentOpen } = useSelector((state: RootState) => state.images);
   return (
