@@ -35,5 +35,18 @@ body {
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #c0a0b9;
   }
+  .scrollbarBlack::-webkit-scrollbar {
+    width: 15px;
+    height: 20px;
+  }
+  
+  
+  .scrollbarBlack::-webkit-scrollbar-thumb {
+    background: #000000;
+  }
+  
+  .scrollbarBlack::-webkit-scrollbar-thumb:hover {
+    background: #424242;
+  }
+  
 }
-
