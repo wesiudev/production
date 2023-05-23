@@ -6,7 +6,7 @@ import { setBrowseImages } from "@/common/redux/slices/imagesSlice";
 export default async function BrowseImages() {
   const req = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/images`, {
     headers: {
-      authorization: process.env.NEXT_PUBLIC_API_KEY!,
+      authorization: "5gingonqn21indzfafwqggzxghe",
     },
     method: "GET",
   });

@@ -6,8 +6,7 @@ import { headers } from 'next/headers';
 export async function GET(req: NextApiRequest) {
   const headersList = headers();
   const referer = headersList.get('authorization')
-  
-  if (referer === process.env.API_KEY) {
+  if (referer === "5gingonqn21indzfafwqggzxghe") {
     const images = await getAllImages(50)
     return NextResponse.json(images);
   }else{
