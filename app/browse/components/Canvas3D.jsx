@@ -129,7 +129,7 @@ export default function Canvas3D({ image }) {
             onClick={() => {
               dispatch(setCurrentOpen(""));
             }}
-            className="italic text-gray-600 py-3"
+            className="italic text-gray-600 py-3 sm:hidden"
           >
             Close window
           </button>
