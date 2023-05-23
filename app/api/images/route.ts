@@ -1,8 +1,9 @@
 import { getAllImages } from "@/common/firebase";
+import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 import { headers } from 'next/headers';
 
-export async function GET() {
+export async function GET(req: NextApiRequest) {
   const headersList = headers();
   const referer = headersList.get('authorization')
   
@@ -10,6 +11,6 @@ export async function GET() {
     const images = await getAllImages(50)
     return NextResponse.json(images);
   }else{
-    return NextResponse.json({error: "Auth faileddd"})
+    return NextResponse.json({error: "Auth failed"})
   }
 }
