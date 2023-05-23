@@ -10,6 +10,6 @@ export async function GET() {
     const images = await getAllImages(50)
     return NextResponse.json(images);
   }else{
-    return NextResponse.json({error: "Auth failed"})
+    return NextResponse.json({error: "Auth faileddd"})
   }
 }
