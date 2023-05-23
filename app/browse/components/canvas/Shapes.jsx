@@ -2,6 +2,9 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 import { useRef, useState } from "react";
+import { PointMaterial, Points } from "@react-three/drei";
+import * as random from "maath/random/dist/maath-random.esm";
+
 export const Blob = ({ image }) => {
   const [rotation, setRotation] = useState(0.009);
   const mesh = useRef();

@@ -1,13 +1,23 @@
 "use client";
 import dynamic from "next/dynamic";
 import capitalizeString from "@/app/utils/CapitalizeString";
-import { FaImage, FaWindowClose } from "react-icons/fa";
+import { FaImage, FaStar, FaWindowClose } from "react-icons/fa";
 import { MdEuroSymbol } from "react-icons/md";
 import moment from "moment";
+import Hero from "@/app/auth/hero/Hero";
+import { store } from "@/common/redux/store";
+import { setCurrentOpen } from "@/common/redux/slices/imagesSlice";
+import { useDispatch } from "react-redux";
 
 const Blob = dynamic(() => import("./canvas/Shapes").then((mod) => mod.Blob), {
   ssr: false,
 });
+const Stars = dynamic(
+  () => import("./canvas/Shapes").then((mod) => mod.Stars),
+  {
+    ssr: false,
+  }
+);
 const View = dynamic(
   () => import("../components/canvas/View").then((mod) => mod.View),
   {
@@ -42,43 +52,63 @@ const Common = dynamic(
   { ssr: false }
 );
 
-export default function Canvas3D({ image, setPreviewOpen }) {
+export default function Canvas3D({ image }) {
+  const dispatch = useDispatch();
   return (
-    <div className="h-[80vh] w-full z-50 bg-white rounded-md overflow-y-scroll scrollbarBlack overflow-x-hidden sm:min-h-0 sm:h-max sm:p-4 sm:pt-1">
-      <div className=" flex flex-row justify-between w-full items-center ">
-        <span className="py-3 pl-1 text-2xl flex flex-row items-center">
-          <FaImage className="mr-1" /> Canvas preview
+    <div className="min-h-screen w-full z-50 bg-white rounded-md overflow-y-scroll scrollbar overflow-x-hidden sm:min-h-0 sm:h-max sm:p-4 sm:pt-1 px-3">
+      <div className="pb-6 pt-6 sm:pt-3 flex flex-row justify-between w-full items-center ">
+        <span className=" pl-1 text-2xl flex flex-row items-center">
+          <FaImage className="mr-1" />
+          Canvas preview
         </span>
-        <button onClick={() => setPreviewOpen(false)}>
+        <button
+          onClick={() => {
+            dispatch(setCurrentOpen(""));
+          }}
+        >
           <FaWindowClose className="h-8 w-8 mr-1" />
         </button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-3">
-        <View
-          orbit
-          className="min-h-[60vh] lg:h-full w-full lg:w-full relative bg-purple-500 ml-1 rounded-md"
-        >
-          <Blob
-            image={image}
-            className="absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] z-50"
-          />
-          <Common />
-        </View>
+        <div className="bg-purple-950">
+          <div className="w-full h-full relative">
+            <Hero />
+            <View
+              orbit
+              className="min-h-[60vh] lg:h-full w-full lg:w-full relative  ml-1 rounded-md"
+            >
+              <Blob
+                image={image}
+                className="absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] z-50"
+              />
+              <Common />
+            </View>
+          </div>
+        </div>
         <div className="flex flex-col p-3 sm:pt-0 relative">
           <div className=" bg-white z-50 lg:mt-0 w-full">
-            <span className="text-xl">{capitalizeString(image.prompt)}</span>
+            <span className="text-xl text-left w-full">
+              {capitalizeString(image.prompt)}
+            </span>
           </div>
           <div className="pt-1">
             Added {moment(image.creationTime).fromNow()}
             {/* <FaThumbsUp />{" "} */}
           </div>
-          <div className="flex flex-row items-center py-6">
+          <div className="flex flex-row items-center pt-6 pb-3 w-full justify-between">
             <div className=" text-4xl flex flex-row items-center">
               45 <MdEuroSymbol />
             </div>
             <button className="bg-purple-500 w-max text-white px-3 py-2 rounded-sm ml-2">
               Buy on canvas
             </button>
+          </div>
+          <div className="flex flex-row pb-2">
+            <FaStar className="text-yellow-500" />
+            <FaStar className="text-yellow-500 ml-px" />
+            <FaStar className="text-yellow-500 ml-px" />
+            <FaStar className="text-yellow-500 ml-px" />
+            <FaStar className="text-yellow-500 ml-px" />
           </div>
           <div className="w-full h-full flex flex-col">
             <div className="flex flex-col w-full h-full overflow-y-scroll scrollbar py-3">
@@ -95,6 +125,14 @@ export default function Canvas3D({ image, setPreviewOpen }) {
               className="bg-gray-200 w-full p-3"
             />
           </div>
+          <button
+            onClick={() => {
+              dispatch(setCurrentOpen(""));
+            }}
+            className="italic text-gray-600 py-3"
+          >
+            Close window
+          </button>
         </div>
       </div>
     </div>

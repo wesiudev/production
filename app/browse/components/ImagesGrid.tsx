@@ -17,6 +17,7 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
             <div className="relative group">
               <Button image={image}>
                 <Image
+                  className="rounded-md"
                   priority
                   width={512}
                   height={512}
@@ -24,10 +25,10 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
                   alt=""
                   key={idx}
                 />
+                <div className="absolute bottom-0 left-0 p-2 bg-black text-white w-full opacity-0 group-hover:opacity-100 ease-in duration-200">
+                  {truncate(capitalizeString(image.prompt)!, 38)}
+                </div>
               </Button>
-              <div className="absolute bottom-0 left-0 p-2 bg-black text-white w-full opacity-0 group-hover:opacity-100 ease-in duration-200">
-                {truncate(capitalizeString(image.prompt)!, 38)}
-              </div>
             </div>
           </div>
         ))}
