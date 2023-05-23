@@ -6,7 +6,7 @@ const initialState: any = {
   loadingImages: true,
   limit:12,
   browseImages: [],
-  currentOpen: {}
+  currentOpen: ""
 };
 
 export const imagesSlice = createSlice({
@@ -24,7 +24,7 @@ export const imagesSlice = createSlice({
       state.browseImages = action.payload
     },
     setCurrentOpen: (state, action) => {
-      state.currentOpen= action.payload
+      state.currentOpen = action.payload
     },
     pushToImages: (state, action) => {
       state.images.push(action.payload)
