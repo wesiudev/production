@@ -3,11 +3,16 @@ import dynamic from "next/dynamic";
 import capitalizeString from "@/app/utils/CapitalizeString";
 import { FaImage, FaStar, FaWindowClose } from "react-icons/fa";
 import { MdEuroSymbol } from "react-icons/md";
+import { BsSendFill } from "react-icons/bs";
 import moment from "moment";
 import Hero from "@/app/auth/hero/Hero";
-import { store } from "@/common/redux/store";
 import { setCurrentOpen } from "@/common/redux/slices/imagesSlice";
 import { useDispatch } from "react-redux";
+import { ImageComments } from "./ImageComments";
+import { useState } from "react";
+import { useUserData } from "@/app/hooks/useUserData";
+import Link from "next/link";
+import { addComment } from "@/common/firebase";
 
 const Blob = dynamic(() => import("./canvas/Shapes").then((mod) => mod.Blob), {
   ssr: false,
@@ -53,9 +58,12 @@ const Common = dynamic(
 );
 
 export default function Canvas3D({ image }) {
+  const [commentValue, setCommentValue] = useState("");
+  const { userData, loading } = useUserData();
   const dispatch = useDispatch();
+
   return (
-    <div className="min-h-screen w-full z-50 bg-white rounded-md sm:min-h-0 sm:h-max sm:p-4 sm:pr-0 sm:pt-1 px-3 overflow-y-scroll scrollbarBlack overflow-x-hidden">
+    <div className="relative min-h-screen w-full z-50 bg-white rounded-md sm:min-h-0 sm:h-max sm:py-4 sm:pl-4 pr-0 sm:pt-1 px-3 overflow-y-scroll scrollbarBlack overflow-x-hidden">
       <div className="pb-6 pt-6 sm:pt-3 flex flex-row justify-between w-full items-center ">
         <span className=" pl-1 text-2xl flex flex-row items-center">
           <FaImage className="mr-1" />
@@ -75,7 +83,7 @@ export default function Canvas3D({ image }) {
             <Hero />
             <View
               orbit
-              className="min-h-[60vh] lg:h-full w-full lg:w-full relative  ml-1 rounded-md"
+              className="min-h-[60vh] lg:h-full w-full lg:w-full relative rounded-md overflow-hidden p-3"
             >
               <Blob
                 image={image}
@@ -85,8 +93,8 @@ export default function Canvas3D({ image }) {
             </View>
           </div>
         </div>
-        <div className="flex flex-col p-3 sm:pt-0 relative">
-          <div className=" bg-white z-50 lg:mt-0 w-full">
+        <div className="flex flex-col px-3 sm:pt-0 relative">
+          <div className="z-50 lg:mt-0 w-full">
             <span className="text-xl text-left w-full">
               {capitalizeString(image.prompt)}
             </span>
@@ -104,32 +112,57 @@ export default function Canvas3D({ image }) {
           </div>
           <div className="flex flex-row items-center pt-6 pb-3 w-full justify-between">
             <div className=" text-4xl flex flex-row items-center">
-              45 <MdEuroSymbol />
+              <MdEuroSymbol /> 45
             </div>
             <button className="bg-purple-500 w-max text-white px-3 py-2 rounded-sm ml-2">
               Buy on canvas
             </button>
           </div>
           <div className="w-full h-full flex flex-col">
-            <div className="flex flex-col w-full h-full overflow-y-scroll scrollbar py-3">
-              Comments {`(${image?.comments?.length})`}
-              {image?.comments?.map((comment, idx) => (
-                <div className="flex flex-col" key={idx}>
-                  <span>{comment.author}</span>
-                  <span>{comment.content}</span>
+            <ImageComments comments={image?.comments} />
+            <div className="relative flex flex-row ">
+              {userData && !loading ? (
+                <textarea
+                  onChange={(e) => setCommentValue(e.target.value)}
+                  value={commentValue}
+                  placeholder="Add comment"
+                  className="bg-gray-200 w-full px-3 pt-3 resize-none focus:outline-none max-h-12"
+                />
+              ) : (
+                <div
+                  onFocus={() => setPopupOpen(true)}
+                  placeholder="Add comment"
+                  className="bg-gray-200 w-full px-3 pt-3 resize-none focus:outline-none max-h-12"
+                >
+                  <span className="text-gray-700">
+                    <Link href="/auth" className="text-blue-600">
+                      {" "}
+                      Sign in{" "}
+                    </Link>{" "}
+                    to comment
+                  </span>
                 </div>
-              ))}
+              )}
+
+              <button
+                onClick={() =>
+                  addComment({
+                    src: image.src,
+                    userData: userData,
+                    commentValue: commentValue,
+                  })
+                }
+                className="bg-purple-500 text-white w-12 h-12 flex justify-center items-center"
+              >
+                <BsSendFill />
+              </button>
             </div>
-            <textarea
-              placeholder="Add comment"
-              className="bg-gray-200 w-full p-3"
-            />
           </div>
           <button
             onClick={() => {
               dispatch(setCurrentOpen(""));
             }}
-            className="italic text-gray-600 py-3 sm:hidden"
+            className="italic text-gray-700 py-4 sm:hidden"
           >
             Close window
           </button>

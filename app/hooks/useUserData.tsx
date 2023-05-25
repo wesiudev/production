@@ -14,7 +14,6 @@ export function useUserData() {
   );
   const { userData } = useSelector((state: RootState) => state.user);
   const [user, loading] = useAuthState(auth);
-
   useEffect(() => {
     if (user && !images.length && !imagesLoading) {
       getUserImages(user?.email, limit).then((res) => dispatch(setImages(res)));

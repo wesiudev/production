@@ -42,11 +42,7 @@ const storage = getStorage(app);
 const imagesRef = collection(db, "images");
 
 async function getAllImages(count) {
-  const filter = query(
-    imagesRef,
-    orderBy("creationTime", "desc"),
-    limit(count)
-  );
+  const filter = query(imagesRef, orderBy("creationTime", "desc"), limit(5));
   const response = await getDocs(filter);
   const images = response.docs.map((doc) => doc.data());
   return images;
@@ -65,6 +61,20 @@ async function getUserImages(email, count) {
 
 async function addImage(req) {
   await addDoc(imagesRef, req);
+}
+async function getImageById(src) {
+  const filter = query(imagesRef, where("src", "==", src));
+  const response = await getDocs(filter);
+  const image = response.docs.map((doc) => ({ id: doc.id }));
+  const imageRef = doc(db, "images", image[0]?.id);
+  return imageRef;
+}
+async function addComment(req) {
+  console.log(req);
+  const imageRef = await getImageById(req.src);
+  await updateDoc(imageRef, {
+    commnents: arrayUnion(req.commentValue),
+  });
 }
 
 //users
@@ -97,6 +107,7 @@ async function getUser(req) {
       isPrivate: true,
       isVerified: false,
       displayName: req.displayName,
+      profileImage: req.photoURL,
     };
     await addDoc(usersRef, newUser);
     const response = await getDocs(filter);
@@ -129,6 +140,7 @@ export {
   getUserImages,
   addImage,
   getAllImages,
+  addComment,
   //users
   getUser,
   updateUserHistory,

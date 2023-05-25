@@ -21,6 +21,7 @@ import { AccountHistoryItem } from "@/types";
 import moment from "moment";
 import Link from "next/link";
 import Badges from "./modals/badges";
+import Image from "next/image";
 export default function Dashboard() {
   const { images, userData, loading } = useUserData();
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ export default function Dashboard() {
               <div className="flex flex-row items-center justify-between w-full bg-purple-900 p-5 rounded-md">
                 <div className="flex flex-row items-center not-italic font-bold">
                   <FaUser className="mr-1 text-2xl" />
+
                   {userData?.displayName
                     ? userData?.displayName
                     : "Your account"}
