@@ -278,7 +278,6 @@ export default function Login() {
                     Close
                   </button>
                   <button
-                    onClick={() => console.log("ok")}
                     type="submit"
                     className="w-1/2 block bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-lg
               px-4 py-3 mt-6"

@@ -68,7 +68,7 @@ export default function GenerateButton(props: any) {
         disabled={isGenerationPending || isError}
         className={`disabled:${
           isError ? "bg-red-500" : ""
-        } disabled:opacity-50 h-max z-[51] disabled:cursor-not-allowed flex flex-row bg-gradient-to-tr from-rose-500  to-purple-950 hover:from-rose-900 hover:to-purple-900 duration-75 ease-in  items-center justify-center shadow-sm shadow-black w-full p-2 text-center mx-auto lg:mx-0 text-gray-50 hover:transition-transform cursor-pointer py-4 px-8 rounded-md text-2xl mt-8`}
+        } disabled:opacity-50 mb-28 h-max z-[51] disabled:cursor-not-allowed flex flex-row bg-gradient-to-tr from-rose-500  to-purple-950 hover:from-rose-900 hover:to-purple-900 duration-75 ease-in  items-center justify-center shadow-sm shadow-black w-full p-2 text-center mx-auto lg:mx-0 text-gray-50 hover:transition-transform cursor-pointer py-4 px-8 rounded-md text-2xl mt-8`}
         onClick={handleImageGeneration}
       >
         {!isGenerationPending && (

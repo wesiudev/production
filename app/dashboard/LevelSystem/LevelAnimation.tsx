@@ -1,6 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 import CountingAnimation from "./CountingAnimation";
 import { useUserData } from "@/app/hooks/useUserData";
 import { FaCoins, FaHome, FaUser } from "react-icons/fa";
@@ -8,16 +7,18 @@ import { calculateLevel } from "./CalculateLevel";
 
 export const LevelAnimation = () => {
   const { userData } = useUserData();
-  const { pointsNeeded, percentageExperience, percentageToAdd } =
-    calculateLevel(userData.accountLevel, userData.accountExperience, 6);
+  const { pointsNeeded } = calculateLevel(
+    userData.accountLevel,
+    userData.accountExperience,
+    6
+  );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log((userData.accountExperience / pointsNeeded) * 100);
   const [active, setActive] = useState(0);
   return (
     <>
       {isMenuOpen === false && (
         <div
-          className={`fixed bottom-10 left-0 w-full h-1/5 flex items-center justify-center z-[53]
+          className={`fixed bottom-10 right-3 w-[90%] mx-auto h-1/5 flex items-center justify-center z-[53]
           
         `}
         >
@@ -27,13 +28,16 @@ export const LevelAnimation = () => {
                 className={`bg-gradient-to-r from-rose-700 to-purple-700 rounded-l-md w-max flex justify-start items-center px-3 
               ${active === 0 && "from-rose-500 to-purple-500"}`}
               >
-                <FaUser className="w-5 h-5 mr-1" /> <span> Your Account</span>
+                <FaUser className="w-5 h-5 mr-1 lg:block" />{" "}
+                <span className="hidden lg:block"> Your Account</span>
               </div>
               <div className="bg-gradient-to-r from-rose-500 to-purple-700 rounded-l-md w-full flex justify-start items-center px-3">
-                <FaHome className="w-5 h-5 mr-1" /> <span> Dashboard</span>
+                <FaHome className="w-5 h-5 mr-1 lg:block" />{" "}
+                <span className="hidden lg:block"> Dashboard</span>
               </div>
               <div className="bg-gradient-to-r from-rose-500 to-purple-700 rounded-l-md w-full flex justify-start items-center px-3">
-                <FaCoins className="w-5 h-5 mr-1" /> <span> Get coins </span>
+                <FaCoins className="w-5 h-5 mr-1 lg:block" />{" "}
+                <span className="hidden lg:block"> Get coins </span>
               </div>
             </div>
           </div>
