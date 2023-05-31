@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/backpack/generator/text/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/backpack/generator/text/page.jsx", "app/dashboard/LevelSystem/CalculateLevel.jsx"],
   "exclude": ["node_modules"]
 }

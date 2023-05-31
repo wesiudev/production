@@ -1,5 +1,5 @@
 "use client";
-import { auth } from "@/common/firebase";
+import { auth, updateUserLevel } from "@/common/firebase";
 import {
   FaArrowRight,
   FaClock,
@@ -21,7 +21,8 @@ import { AccountHistoryItem } from "@/types";
 import moment from "moment";
 import Link from "next/link";
 import Badges from "./modals/badges";
-import Image from "next/image";
+import InfoHover from "../components/infohover";
+import { calculateLevel } from "./LevelSystem/CalculateLevel";
 export default function Dashboard() {
   const { images, userData, loading } = useUserData();
   const dispatch = useDispatch();
@@ -38,6 +39,11 @@ export default function Dashboard() {
       (a: { creationTime: number }, b: { creationTime: number }) =>
         b.creationTime - a.creationTime
     );
+
+  const { percentageExperience } = calculateLevel(
+    userData.accountLevel,
+    userData.accountExperience
+  );
   return (
     <>
       {(!images || loading) && <Loading />}
@@ -72,29 +78,54 @@ export default function Dashboard() {
                     : "Your account"}
                 </div>
               </div>
-              <div className="flex flex-col sm:grid sm:grid-cols-2 gap-x-3 w-full mt-2">
-                <div className="bg-purple-900 rounded-md p-5 w-full">
+
+              <div className="flex flex-col sm:grid sm:grid-cols-2 gap-x-3 w-full mt-2 relative">
+                <div className="bg-purple-900 rounded-md p-5 w-full relative min-h-[40vh]">
                   <span className="text-3xl not-italic">Details</span>
                   <div className="flex flex-col mt-2">
                     <div className="text-xl flex flex-row items-center mt-2">
                       <FaEnvelope className="h-6 w-6 mr-1 mt-[2px]" />
 
-                      <span className="text-sm lg:text-xl overflow-x-hidden">
+                      <span className="text-lg overflow-x-hidden">
                         {userData?.email}
                       </span>
                     </div>
                     <span className="flex flex-row items-center relative w-max mt-2 text-[20px]">
-                      <FaCoins className="text-white h-6 w-6 mr-1 z-40" />{" "}
-                      {/* TODO z-index of the element based on current step of the tutorial  */}
-                      <span className="text-gray-100 flex flex-row items-center z-40">
+                      <FaCoins
+                        className={`text-white h-6 w-6 mr-1 ${
+                          userData.tutorialStep === 0 && "z-50"
+                        }`}
+                      />{" "}
+                      <span
+                        className={`text-gray-100 flex flex-row items-center ${
+                          userData.tutorialStep === 0 && "z-50"
+                        }`}
+                      >
                         {userData.balance}
                       </span>
-                      {/* {dashboard.tutorials.wallet === "todo" && <InfoHover
-                    title="Account balance"
-                    description="Each render has its own price. You can earn Render Points daily by being active user. There's also a shop where you can buy them."
-                    side="L"
-                  />} */}
+                      {userData.tutorialStep === 0 && (
+                        <InfoHover
+                          title="Account balance"
+                          description="Each render has its own price. You can earn Render Points daily by being active user. There is also a shop where you can buy them."
+                          side="L"
+                          destination="tutorialStep01"
+                        />
+                      )}
                     </span>
+                    <div className="bottom-0 left-0 absolute p-5 flex flex-col w-full text-lg">
+                      <div className="flex flex-row justify-between pb-2 relative">
+                        <span>Experience</span>
+                        <div className="">Lv. {userData.accountLevel + 1}</div>
+                      </div>
+                      <div className="w-full h-2 bg-gray-50 rounded-full relative overflow-hidden">
+                        <div
+                          style={{
+                            transform: `translateX(${percentageExperience}%)`,
+                          }}
+                          className={`bg-green-600 absolute top-0 h-3 w-full -left-[100%]`}
+                        ></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="p-5 h-full bg-purple-900 rounded-md w-full mt-2 sm:mt-0 ">

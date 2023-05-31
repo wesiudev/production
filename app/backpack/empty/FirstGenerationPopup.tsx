@@ -1,7 +1,7 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
-import { addImage, storage } from "@/common/firebase";
+import { addImage, storage, updateUserLevel } from "@/common/firebase";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import { Msg } from "./MsgSuccess";
@@ -9,6 +9,11 @@ import { FaImage } from "react-icons/fa";
 import { pushToImages } from "@/common/redux/slices/imagesSlice";
 import { useDispatch } from "react-redux";
 import { useUserData } from "@/app/hooks/useUserData";
+import { calculateLevel } from "@/app/dashboard/LevelSystem/CalculateLevel";
+import {
+  setAccountExperience,
+  setLevelAnimated,
+} from "@/common/redux/slices/userSlice";
 
 export default function FirstGenerationPopup(props: any) {
   const {
@@ -25,6 +30,10 @@ export default function FirstGenerationPopup(props: any) {
     isError,
   } = props;
   const { userData } = useUserData();
+  const { level, pointsNeeded } = calculateLevel(
+    userData.accountLevel,
+    userData.accountExperience
+  );
   const dispatch = useDispatch();
   const saveImage = async () => {
     if (hasImage)
@@ -51,7 +60,32 @@ export default function FirstGenerationPopup(props: any) {
                 prompt: userPrompt,
                 src: url,
               };
-              addImage(req), dispatch(pushToImages(req)), setHasImage(false);
+              addImage(req),
+                dispatch(pushToImages(req)),
+                setHasImage(false),
+                updateUserLevel({
+                  email: userData?.email,
+                  level: level,
+                  accountExperience: userData.accountExperience,
+                  pointsToAdd: 6,
+                  pointsNeeded: pointsNeeded,
+                }).then(() =>
+                  dispatch(
+                    setAccountExperience({
+                      pointsToAdd: 6,
+                      accountLevel: level,
+                      accountExperience: userData.accountExperience,
+                      pointsNeeded: pointsNeeded,
+                    })
+                  )
+                ),
+                //animate the progress bar with user experience...
+                dispatch(setLevelAnimated(false));
+              calculateLevel(
+                userData.accountLevel,
+                userData.accountExperience,
+                6
+              );
               toast.update(id, {
                 render: Msg,
                 type: "success",
@@ -77,7 +111,7 @@ export default function FirstGenerationPopup(props: any) {
   return (
     <>
       {isGenerationTriggered && userPrompt.length && (
-        <div className="z-50 fixed h-screen w-screen top-0 left-0 flex items-center justify-center bg-black bg-opacity-80 ">
+        <div className="z-[54] fixed h-screen w-screen top-0 left-0 flex items-center justify-center bg-black bg-opacity-80 ">
           <div className="h-max sm:w-max w-[90vw] bg-purple-950 rounded-xl px-3 sm:px-12 flex flex-col justify-evenly">
             {hasImage && (
               <div className="w-full flex justify-center flex-col text-center">

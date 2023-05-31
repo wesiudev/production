@@ -14,7 +14,6 @@ interface ImageCommentArray {
 }
 const ImageComments = (props: ImageCommentArray) => {
   const { comments } = props;
-  console.log(comments);
   return (
     <div className="flex flex-col w-full h-full overflow-y-scroll scrollbar py-3">
       Comments {`(${comments?.length})`}

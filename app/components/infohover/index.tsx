@@ -1,8 +1,15 @@
+import { useUserData } from "@/app/hooks/useUserData";
+import { updateUserTutorial } from "@/common/firebase";
+import { setUser, setUserTutorial } from "@/common/redux/slices/userSlice";
+import { useDispatch } from "react-redux";
+import * as Scroll from "react-scroll";
+
 interface InfoHover {
   title: string;
   description?: string;
   destination?: string | undefined;
   side?: string; // Specify on which side is the element to point at. R-right L-left
+  scroll?: number;
 }
 
 export default function InfoHover({
@@ -10,7 +17,10 @@ export default function InfoHover({
   description,
   destination,
   side,
+  scroll,
 }: InfoHover) {
+  const { userData } = useUserData();
+  const dispatch = useDispatch();
   const alignElement = () => {
     switch (side) {
       case "L":
@@ -40,6 +50,7 @@ export default function InfoHover({
         break;
     }
   };
+  let ScrollLink = Scroll.Link;
   return (
     <>
       <div className="fixed left-0 top-0 w-screen h-screen bg-black bg-opacity-60 z-30"></div>
@@ -59,7 +70,7 @@ export default function InfoHover({
           <div
             className={`${
               description ? "text-center" : "text-left"
-            } z-50 text-xl sm:text-lg`}
+            } z-50 text-xl font-bold`}
           >
             {title}
           </div>
@@ -73,9 +84,22 @@ export default function InfoHover({
               <div className="text-left z-50 text-lg sm:text-md">
                 {description}
               </div>
-              <button className="text-xl py-2 px-3 w-full bg-gradient-to-r from-blue-900 to-rose-600  hover:from-blue-800 hover:to-rose-500 mt-3 rounded-md">
+              <ScrollLink
+                to={destination}
+                smooth={true}
+                duration={500}
+                delay={200}
+                onClick={() => {
+                  updateUserTutorial({
+                    email: userData.email,
+                    tutorial: userData.tutorialStep + 1,
+                  }),
+                    dispatch(setUserTutorial(userData.tutorialStep + 1));
+                }}
+                className="font-normal cursor-pointer text-center text-xl py-2 px-3 w-full bg-gradient-to-r from-blue-900 to-rose-600  hover:from-blue-800 hover:to-rose-500 mt-3 rounded-md"
+              >
                 Next
-              </button>
+              </ScrollLink>
             </>
           )}
         </div>

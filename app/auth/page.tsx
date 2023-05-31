@@ -64,6 +64,12 @@ export default function Login() {
               setEmailError("");
             }, 7500);
           }
+          if (error.code === `auth/wrong-password`) {
+            setPasswordError("Wrong password.");
+            setTimeout(() => {
+              setPasswordError("");
+            }, 7500);
+          }
         });
     } else if (!email.includes("@") || !email.includes(".")) {
       setEmailError("Please enter valid email adress.");

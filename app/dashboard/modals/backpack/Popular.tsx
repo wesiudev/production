@@ -34,7 +34,7 @@ export const Popular = ({ images }: DocumentData) => {
                     height={60}
                     alt=""
                     src={image.src}
-                    className="w-max h-max z-50 rounded-md"
+                    className="w-max h-max z-20 rounded-md"
                   />
                 </div>
                 <div className="h-max flex flex-col justify-between">

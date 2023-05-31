@@ -108,6 +108,8 @@ async function getUser(req) {
       isVerified: false,
       displayName: req.displayName,
       profileImage: req.photoURL,
+      accountLevel: 1,
+      accountExperience: 0,
     };
     await addDoc(usersRef, newUser);
     const response = await getDocs(filter);
@@ -120,12 +122,27 @@ async function updateUserHistory(req) {
   await updateDoc(userRef, {
     accountHistory: arrayUnion(req.accountHistory),
   });
-  // if (user[0].length === 2) {
-  //   user.accountHistory.sort((a, b) => a.creationTime - b.creationTime);
-  // }
-  // const accountHistory = [
-  //   { creationTime: Date.now(), action: "Joined decocanva" },
-  // ];
+}
+async function updateUserTutorial(req) {
+  const userRef = await getUserById(req);
+  await updateDoc(userRef, {
+    tutorialStep: req.tutorial,
+  });
+}
+async function updateUserLevel(req) {
+  const { level, pointsToAdd, accountExperience, pointsNeeded } = req;
+
+  const userRef = await getUserById(req);
+  if (accountExperience + pointsToAdd > pointsNeeded) {
+    await updateDoc(userRef, {
+      accountExperience: pointsToAdd + accountExperience - pointsNeeded,
+      accountLevel: level + 1,
+    });
+  } else {
+    await updateDoc(userRef, {
+      accountExperience: accountExperience + pointsToAdd,
+    });
+  }
 }
 
 //\\///\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
@@ -144,4 +161,6 @@ export {
   //users
   getUser,
   updateUserHistory,
+  updateUserTutorial,
+  updateUserLevel,
 };

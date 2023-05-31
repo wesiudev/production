@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 const initialState: any = {
   userData: {},
-  userPrompt:""
+  levelAnimated: true,
 };
 
 export const userSlice = createSlice({
@@ -14,8 +14,19 @@ export const userSlice = createSlice({
     setUser: (state, action:PayloadAction<string>) => {
       state.userData = action.payload
     },
-    setUserPrompt:(state, action:PayloadAction<string>) => {
-      state.userData.userPrompt = action.payload
+    setUserTutorial:(state, action:PayloadAction<string>) => {
+      state.userData.tutorialStep = action.payload
+    },
+    setAccountExperience:(state,action:PayloadAction<any>) => {
+      if (action.payload.pointsToAdd + action.payload.accountExperience > action.payload.pointsNeeded) {
+        state.userData.accountExperience = state.userData.accountExperience+action.payload.pointsToAdd-action.payload.pointsNeeded
+        state.userData.accountLevel += 1
+      }else{
+        state.userData.accountExperience += action.payload.pointsToAdd
+      }
+    },
+    setLevelAnimated:(state, action:PayloadAction<any>) => {
+      state.levelAnimated = action.payload
     },
     logout: (state) => {
       state.userData = {}
@@ -24,6 +35,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser, logout, setUserPrompt } = userSlice.actions;
+export const { setUser, logout, setUserTutorial, setAccountExperience, setLevelAnimated } = userSlice.actions;
 
 export default userSlice.reducer;
