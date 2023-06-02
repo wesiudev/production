@@ -10,7 +10,7 @@ export const BrowseHeader = () => {
       </div>
       <div className="fixed w-full h-16 bottom-0 left-0 flex flex-row items-center justify-evenly text-gray-100 bg-purple-800 z-50">
         <Link
-          href="/contact"
+          href="/"
           className="flex sm:flex-row flex-col items-center justify-center hover:bg-purple-700 w-full h-full"
         >
           <FaHome className="h-6 w-6 sm:mr-3" />
@@ -24,7 +24,7 @@ export const BrowseHeader = () => {
           <span>Shop</span>
         </Link>
         <Link
-          href="/blog"
+          href="/"
           className="flex sm:flex-row flex-col  items-center justify-center hover:bg-purple-700 w-full h-full"
         >
           <FaBlog className="h-6 w-6 sm:mr-3" />
