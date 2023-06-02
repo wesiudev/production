@@ -1,7 +1,14 @@
 "use client";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../common/firebase";
-import { FaBlog, FaImage, FaPhone, FaSignInAlt, FaUser } from "react-icons/fa";
+import {
+  FaBlog,
+  FaImage,
+  FaImages,
+  FaPhone,
+  FaSignInAlt,
+  FaUser,
+} from "react-icons/fa";
 import Link from "next/link";
 export default function Header() {
   const [user, loading] = useAuthState(auth);
@@ -29,8 +36,8 @@ export default function Header() {
               href="/browse"
               className="flex sm:flex-row flex-col  items-center justify-center hover:bg-purple-700 w-full h-full"
             >
-              <FaImage className="h-6 w-6 sm:mr-3" />
-              <span>Explore</span>
+              <FaImages className="h-6 w-6 sm:mr-3" />
+              <span>Shop</span>
             </Link>
             <Link
               href="/blog"
