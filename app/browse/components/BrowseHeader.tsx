@@ -1,35 +1,34 @@
 import Link from "next/link";
+import { FaBlog, FaHome, FaImages } from "react-icons/fa";
 
 export const BrowseHeader = () => {
   return (
-    <header className="flex flex-col  w-[90vw] sm:w-3/4 items-center font-sans mx-auto py-6">
-      <span className="text-5xl sm:text-6xl lg:text-9xl font-bold w-full text-white">
-        Decocanva
-      </span>
-      <div className="flex flex-row flex-wrap gap-3 text-white w-full py-6">
+    <header className="flex w-[90vw] sm:w-3/4 items-center font-sans mx-auto py-6">
+      <div className="font-extralight text-5xl sm:text-6xl lg:text-9xl text-white w-max">
+        <span className="">Explore</span>
+        <span className="text-lg"> the Art of OpenAI </span>
+      </div>
+      <div className="fixed w-full h-16 bottom-0 left-0 flex flex-row items-center justify-evenly text-gray-100 bg-purple-800 z-50">
         <Link
-          href="/"
-          className=" px-2 py-2 flex items-center justify-center border-b-2 border-white hover:border-purple-500 "
+          href="/contact"
+          className="flex sm:flex-row flex-col items-center justify-center hover:bg-purple-700 w-full h-full"
         >
-          Home
+          <FaHome className="h-6 w-6 sm:mr-3" />
+          <span> Home</span>
         </Link>
         <Link
-          href=""
-          className="px-2 py-3 flex items-center justify-center border-b-2 border-purple-500"
+          href="/browse"
+          className="flex sm:flex-row flex-col  items-center justify-center hover:bg-purple-700 w-full h-full"
         >
-          Shop
+          <FaImages className="h-6 w-6 sm:mr-3" />
+          <span>Shop</span>
         </Link>
         <Link
-          href="https://www.facebook.com/profile.php?id=100092608192165"
-          className=" px-2 py-3 flex items-center justify-center border-b-2 border-white hover:border-purple-500"
+          href="/blog"
+          className="flex sm:flex-row flex-col  items-center justify-center hover:bg-purple-700 w-full h-full"
         >
-          Facebook
-        </Link>
-        <Link
-          href=""
-          className=" px-2 py-3 flex items-center justify-center border-b-2 border-white hover:border-purple-500"
-        >
-          Instagram
+          <FaBlog className="h-6 w-6 sm:mr-3" />
+          <span>Blog</span>
         </Link>
       </div>
     </header>

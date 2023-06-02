@@ -5,11 +5,12 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "./Button";
 import { ImagePreview } from "./ImagePreview";
+import { ScrollTrigger } from "./ScrollTrigger";
 // import Canvas3D from "./Canvas3D";
 // import { Layout } from "../components/dom/Layout";
 export default function ImagesGrid({ images }: { images: ImageProps[] }) {
   return (
-    <div className="relative">
+    <div className="relative pb-32">
       <ImagePreview />
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-3 mx-auto mt-3">
         {images?.map((image: ImageProps, idx: number) => (
@@ -32,6 +33,7 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
           </div>
         ))}
       </div>
+      <ScrollTrigger />
     </div>
   );
 }

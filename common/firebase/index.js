@@ -42,7 +42,11 @@ const storage = getStorage(app);
 const imagesRef = collection(db, "images");
 
 async function getAllImages(count) {
-  const filter = query(imagesRef, orderBy("creationTime", "desc"), limit(5));
+  const filter = query(
+    imagesRef,
+    orderBy("creationTime", "desc"),
+    limit(count)
+  );
   const response = await getDocs(filter);
   const images = response.docs.map((doc) => doc.data());
   return images;

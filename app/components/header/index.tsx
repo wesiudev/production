@@ -20,23 +20,23 @@ export default function Header() {
           <div className="fixed w-full h-16 bottom-0 left-0 flex flex-row items-center justify-evenly text-gray-100 bg-purple-800 ">
             <Link
               href="/contact"
-              className="flex flex-row sm:flex-col items-center justify-center hover:bg-purple-700 w-full h-full"
+              className="flex sm:flex-row flex-col items-center justify-center hover:bg-purple-700 w-full h-full"
             >
-              <FaPhone className="h-6 w-6" />
+              <FaPhone className="h-6 w-6 sm:mr-3" />
               <span> Contact</span>
             </Link>
             <Link
               href="/browse"
-              className="flex flex-row sm:flex-col items-center justify-center hover:bg-purple-700 w-full h-full"
+              className="flex sm:flex-row flex-col  items-center justify-center hover:bg-purple-700 w-full h-full"
             >
-              <FaImage className="h-6 w-6" />
+              <FaImage className="h-6 w-6 sm:mr-3" />
               <span>Explore</span>
             </Link>
             <Link
               href="/blog"
-              className="flex flex-row sm:flex-col items-center justify-center hover:bg-purple-700 w-full h-full"
+              className="flex sm:flex-row flex-col  items-center justify-center hover:bg-purple-700 w-full h-full"
             >
-              <FaBlog className="h-6 w-6" />
+              <FaBlog className="h-6 w-6 sm:mr-3" />
               <span>Blog</span>
             </Link>
           </div>

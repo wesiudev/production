@@ -2,14 +2,15 @@ import { getAllImages } from "@/common/firebase";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 import { headers } from 'next/headers';
+import { DocumentData } from "firebase/firestore/lite";
 
 export async function GET(req: NextApiRequest) {
   const headersList = headers();
-  const referer = headersList.get('authorization')
-  if (referer === "5gingonqn21indzfafwqggzxghe") {
-    const images = await getAllImages(50)
+  // const referer = headersList.get('authorization')
+  // if (referer === "5gingonqn21indzfafwqggzxghe") {
+    const images = await getAllImages(10000)
     return NextResponse.json(images);
-  }else{
-    return NextResponse.json({error: "Auth failed"})
-  }
+  // }else{
+  //   return NextResponse.json({error: "Auth failed"})
+  // }
 }

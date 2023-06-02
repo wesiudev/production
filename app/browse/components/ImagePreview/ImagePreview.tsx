@@ -1,9 +1,9 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import { Layout } from "./dom/Layout";
+import { Layout } from "../dom/Layout";
 import { RootState } from "@/common/redux/store";
-import Canvas3D from "../components/Canvas3D";
+import Canvas3D from "../Canvas3D";
 export const ImagePreview = () => {
   const { currentOpen } = useSelector((state: RootState) => state.images);
   return (

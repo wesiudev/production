@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState: any = {
   images: [],
   loadingImages: true,
-  limit:12,
+  limit:{limit: 12, isFetching:false},
   browseImages: [],
   currentOpen: ""
 };

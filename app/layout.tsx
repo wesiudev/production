@@ -6,6 +6,9 @@ export const metadata = {
   icons: {
     icon: "/favicon.png",
   },
+  title: "Decocanva - Explore Images Powered by OpenAI",
+  themeColor: "purple",
+  authors: [{ name: "wesiudev" }],
 };
 const cocosharp = localFont({
   src: [

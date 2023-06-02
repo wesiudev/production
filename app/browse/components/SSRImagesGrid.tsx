@@ -1,10 +1,11 @@
 import { store } from "@/common/redux/store";
-import ImagesGrid from "./ImagesGrid";
+import ImagesGrid from "./ImagePreview/ImagesGrid";
 
 function SSRImageGrid() {
+  const browseImages = store.getState().images.browseImages;
   return (
     <div>
-      <ImagesGrid images={store.getState().images.browseImages} />
+      <ImagesGrid images={browseImages} />
     </div>
   );
 }

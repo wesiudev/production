@@ -8,7 +8,7 @@ import moment from "moment";
 import Hero from "@/app/auth/hero/Hero";
 import { setCurrentOpen } from "@/common/redux/slices/imagesSlice";
 import { useDispatch } from "react-redux";
-import { ImageComments } from "./ImageComments";
+import { ImageComments } from "./ImagePreview/ImageComments";
 import { addComment, auth } from "@/common/firebase";
 
 const Blob = dynamic(() => import("./canvas/Shapes").then((mod) => mod.Blob), {

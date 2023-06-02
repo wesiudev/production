@@ -1,10 +1,9 @@
 import { store } from "@/common/redux/store";
 import SSRImageGrid from "./components/SSRImagesGrid";
-import { Search } from "./components/Search";
 import { setBrowseImages } from "@/common/redux/slices/imagesSlice";
 
 export default async function BrowseImages() {
-  const req = await fetch("https://decocanva.com/api/images", {
+  const req = await fetch("http:localhost:3000/api/images", {
     headers: {
       authorization: process.env.API_KEY!,
     },
@@ -14,7 +13,6 @@ export default async function BrowseImages() {
   return (
     <div className="flex flex-col font-sans items-center align-middle">
       <div className="w-[90vw] sm:w-3/4">
-        <Search />
         <SSRImageGrid />
       </div>
     </div>
