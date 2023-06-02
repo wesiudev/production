@@ -33,7 +33,7 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
           </div>
         ))}
       </div>
-      <ScrollTrigger />
+      {/* <ScrollTrigger /> */}
     </div>
   );
 }
