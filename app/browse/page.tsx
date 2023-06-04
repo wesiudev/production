@@ -3,9 +3,9 @@ import SSRImageGrid from "./components/SSRImagesGrid";
 import { setBrowseImages } from "@/common/redux/slices/imagesSlice";
 
 export default async function BrowseImages() {
-  const req = await fetch(`https://www.decocanva.com/api/images`, {
+  const req = await fetch("https://www.decocanva.com/api/images", {
     headers: {
-      authorization: process.env.API_KEY!,
+      authorization: process.env.NEXT_PUBLIC_API_KEY!,
     },
   });
   const data = await req.json();
