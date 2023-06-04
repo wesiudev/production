@@ -1,3 +1,4 @@
+"use client";
 import capitalizeString from "@/app/utils/CapitalizeString";
 import truncate from "@/app/utils/CutString";
 import { ImageProps } from "@/types";
@@ -19,7 +20,7 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
           <div
             key={idx}
             className={`relative ${
-              idx < store.getState().images.limit ? "hidden" : "block"
+              idx <= store.getState().images.limit ? "block" : "hidden"
             }`}
           >
             <div className="relative group">
