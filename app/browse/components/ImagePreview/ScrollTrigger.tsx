@@ -4,16 +4,24 @@ import { RootState, store } from "@/common/redux/store";
 import { useEffect, useRef } from "react";
 import { useIsVisible } from "react-is-visible";
 import { useSelector } from "react-redux";
+import * as Scroll from "react-scroll";
 export function ScrollTrigger() {
-  const { limit, isFetching } = useSelector((state: RootState) => state.images);
+  let scroll = Scroll.animateScroll;
+  const limit = useSelector((state: RootState) => state.images.limit);
+  const isFetching = useSelector((state: RootState) => state.images.isFetching);
   const nodeRef = useRef<any>();
   const isVisible = useIsVisible(nodeRef);
   const images = useSelector((state: RootState) => state.images.browseImages);
   useEffect(() => {
     (async () => {
       if (isVisible) {
-        store.dispatch(setLimit(limit + 12));
-        if (isFetching && store.getState().images.browseImages.length > limit) {
+        scroll.scrollMore(-100, true, true);
+        store.dispatch(setFetching(true));
+        console.log(isFetching);
+        setTimeout(() => {
+          store.dispatch(setLimit(limit + 12));
+        }, 1000);
+        if (isFetching) {
           setTimeout(() => {
             store.dispatch(setFetching(false));
           }, 1500);
@@ -32,7 +40,7 @@ export function ScrollTrigger() {
       ></div>{" "}
       <div className="w-full h-[15vh] ">
         {" "}
-        {isFetching && (
+        {isFetching === true && (
           <div className="flex justify-center items-center flex-col h-full mt-3">
             {" "}
             <svg

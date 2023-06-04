@@ -1,3 +1,4 @@
+"use client";
 import capitalizeString from "@/app/utils/CapitalizeString";
 import truncate from "@/app/utils/CutString";
 import { ImageProps } from "@/types";
@@ -11,12 +12,16 @@ import { useSelector } from "react-redux";
 // import Canvas3D from "./Canvas3D";
 // import { Layout } from "../components/dom/Layout";
 export default function ImagesGrid({ images }: { images: ImageProps[] }) {
+  const { limit } = useSelector((state: RootState) => state.images);
   return (
     <div className="relative pb-32">
       <ImagePreview />
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-3 mx-auto mt-3">
         {images?.map((image: ImageProps, idx: number) => (
-          <div key={idx} className={`relative `}>
+          <div
+            key={idx}
+            className={`relative ${limit < idx ? "hidden" : "block"}`}
+          >
             <div className="relative group">
               <Button image={image}>
                 <Image
