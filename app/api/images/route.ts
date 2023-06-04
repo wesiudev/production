@@ -5,9 +5,8 @@ import { headers } from 'next/headers';
 
 export async function GET(req: NextApiRequest) {
   const headersList = headers();
-  if (headersList.get('host') === "decocanva.com" || "localhost:3000") {
+  if (headersList.get('authorization') === "AAADWQFVMOZZ9@gmo!movVQWZZwqqfv") {
     const images = await getAllImages(50)
     return NextResponse.json(images);
   }
-
 }
