@@ -8,10 +8,12 @@ import { Button } from "./Button";
 import { ImagePreview } from "./ImagePreview";
 import { ScrollTrigger } from "./ScrollTrigger";
 import { ScrollTriggerProvider } from "./ScrollTriggerProvider";
-import { store } from "@/common/redux/store";
+import { RootState } from "@/common/redux/store";
+import { useSelector } from "react-redux";
 // import Canvas3D from "./Canvas3D";
 // import { Layout } from "../components/dom/Layout";
 export default function ImagesGrid({ images }: { images: ImageProps[] }) {
+  const limit = useSelector((state: RootState) => state.images.limit);
   return (
     <div className="relative pb-32">
       <ImagePreview />
@@ -19,9 +21,7 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
         {images?.map((image: ImageProps, idx: number) => (
           <div
             key={idx}
-            className={`relative ${
-              idx <= store.getState().images.limit ? "block" : "hidden"
-            }`}
+            className={`relative ${idx <= limit ? "block" : "hidden"}`}
           >
             <div className="relative group">
               <Button image={image}>
