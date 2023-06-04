@@ -21,7 +21,7 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
         {images?.map((image: ImageProps, idx: number) => (
           <div
             key={idx}
-            className={`relative ${idx <= limit ? "block" : "hidden"}`}
+            className={`relative ${idx + 1 <= limit ? "block" : "hidden"}`}
           >
             <div className="relative group">
               <Button image={image}>
