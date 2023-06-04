@@ -21,11 +21,11 @@ export function ScrollTrigger() {
         setTimeout(() => {
           store.dispatch(setLimit(limit + 12));
         }, 1000);
-        if (isFetching) {
-          setTimeout(() => {
+        setTimeout(() => {
+          if (limit <= store.getState().images.browseImages) {
             store.dispatch(setFetching(false));
-          }, 1500);
-        }
+          }
+        }, 1500);
       }
     })();
   }, [isVisible]);

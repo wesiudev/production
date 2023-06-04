@@ -3,7 +3,7 @@ import SSRImageGrid from "./components/SSRImagesGrid";
 import { setBrowseImages } from "@/common/redux/slices/imagesSlice";
 
 export default async function BrowseImages() {
-  const req = await fetch("http://localhost:3000/api/images", {
+  const req = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/images`, {
     headers: {
       authorization: process.env.API_KEY!,
     },

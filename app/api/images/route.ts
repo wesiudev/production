@@ -7,7 +7,7 @@ export async function GET(req: NextApiRequest) {
   const headersList = headers();
   const referer = headersList.get('authorization')
   if (referer === "AAADWQFVMOZZ9@gmo!movVQWZZwqqfv") {
-    const images = await getAllImages(5000)
+    const images = await getAllImages(50)
     return NextResponse.json(images);
   }else{
     return NextResponse.json({error: "Auth failed"})
