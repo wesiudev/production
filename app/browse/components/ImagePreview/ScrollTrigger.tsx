@@ -17,7 +17,6 @@ export function ScrollTrigger() {
       if (isVisible) {
         scroll.scrollMore(-100, true, true);
         store.dispatch(setFetching(true));
-        console.log(isFetching);
         setTimeout(() => {
           store.dispatch(setLimit(limit + 12));
         }, 1000);
@@ -27,7 +26,6 @@ export function ScrollTrigger() {
       }
     })();
   }, [isVisible]);
-  console.log(images.length);
   return (
     <>
       <div
