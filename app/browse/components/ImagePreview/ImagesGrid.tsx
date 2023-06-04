@@ -1,18 +1,14 @@
-// "use client";
 import capitalizeString from "@/app/utils/CapitalizeString";
 import truncate from "@/app/utils/CutString";
 import { ImageProps } from "@/types";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "./Button";
 import { ImagePreview } from "./ImagePreview";
 import { ScrollTrigger } from "./ScrollTrigger";
-import { RootState, store } from "@/common/redux/store";
-import { useSelector } from "react-redux";
 // import Canvas3D from "./Canvas3D";
 // import { Layout } from "../components/dom/Layout";
 export default function ImagesGrid({ images }: { images: ImageProps[] }) {
-  // const { limit } = useSelector((state: RootState) => state.images);
   return (
     <div className="relative pb-32">
       <ImagePreview />
@@ -37,7 +33,7 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
           </div>
         ))}
       </div>
-      <ScrollTrigger />
+      {/* <ScrollTrigger /> */}
     </div>
   );
 }
