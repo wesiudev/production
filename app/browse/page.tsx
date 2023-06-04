@@ -1,9 +1,10 @@
 import { store } from "@/common/redux/store";
 import SSRImageGrid from "./components/SSRImagesGrid";
 import { setBrowseImages } from "@/common/redux/slices/imagesSlice";
+import { getAllImages } from "@/common/firebase";
 
 export default async function BrowseImages() {
-  const req = await fetch("https://www.decocanva.com/api/images", {
+  const req = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/images`, {
     headers: {
       authorization: process.env.API_KEY!,
     },

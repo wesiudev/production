@@ -1,42 +1,35 @@
 "use client";
-import { getAllImages } from "@/common/firebase";
-import { setBrowseImages, setLimit } from "@/common/redux/slices/imagesSlice";
-import { RootState } from "@/common/redux/store";
-import { useEffect, useRef, useState } from "react";
+import { setFetching, setLimit } from "@/common/redux/slices/imagesSlice";
+import { RootState, store } from "@/common/redux/store";
+import { useEffect, useRef } from "react";
 import { useIsVisible } from "react-is-visible";
-import { useDispatch, useSelector } from "react-redux";
-import * as Scroll from "react-scroll";
+import { useSelector } from "react-redux";
 export function ScrollTrigger() {
-  let scroll = Scroll.animateScroll;
-  const [currentLimit, setCurrentLimit] = useState(12);
-  const { limit, isFetching } = useSelector(
-    (state: RootState) => state.images.limit
-  );
-  const dispatch = useDispatch();
+  const { limit, isFetching } = useSelector((state: RootState) => state.images);
   const nodeRef = useRef<any>();
   const isVisible = useIsVisible(nodeRef);
+  const images = useSelector((state: RootState) => state.images.browseImages);
   useEffect(() => {
-    if (isVisible) {
-      isFetching && scroll.scrollMore(-100, true, true);
-      console.log("fetching");
-      if (limit <= currentLimit && !isFetching) {
-        setCurrentLimit(currentLimit + 12);
-        setTimeout(() => {
-          dispatch(setLimit({ limit: currentLimit, isFetching: false }));
-        }, 1000);
-        dispatch(
-          setLimit({
-            limit: currentLimit,
-            isFetching: true,
-          })
-        );
+    (async () => {
+      if (isVisible) {
+        store.dispatch(setLimit(limit + 12));
+        if (isFetching && store.getState().images.browseImages.length > limit) {
+          setTimeout(() => {
+            store.dispatch(setFetching(false));
+          }, 1500);
+        }
       }
-      console.log(limit);
-    }
-  }, [currentLimit, dispatch, isFetching, isVisible, limit]);
+    })();
+  }, [isVisible]);
+  console.log(images.length);
   return (
     <>
-      <div className="absolute -bottom-12 w-1 h-1" ref={nodeRef}></div>{" "}
+      <div
+        className={`${
+          isFetching ? "hidden relative" : "block absolute"
+        }  -bottom-12 w-1 h-1`}
+        ref={nodeRef}
+      ></div>{" "}
       <div className="w-full h-[15vh] ">
         {" "}
         {isFetching && (

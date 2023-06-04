@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState: any = {
   images: [],
   loadingImages: true,
-  limit:{limit: 12, isFetching:false},
+  limit: 12, 
+  isFetching:false,
   browseImages: [],
   currentOpen: ""
 };
@@ -15,6 +16,9 @@ export const imagesSlice = createSlice({
   reducers: {
     setLimit: (state, action) => {
       state.limit = action.payload
+    },
+    setFetching: (state, action) => {
+      state.isFetching = action.payload
     },
     setImages: (state, action) => {
       state.images = action.payload
@@ -27,7 +31,7 @@ export const imagesSlice = createSlice({
       state.currentOpen = action.payload
     },
     pushToImages: (state, action) => {
-      state.images.push(action.payload)
+      state.browseImages = [...state.browseImages, action.payload]
     },
 
     clearImages: (state, action) => {
@@ -36,6 +40,6 @@ export const imagesSlice = createSlice({
   },
 });
 
-export const { setImages, clearImages, pushToImages, setLimit,setBrowseImages, setCurrentOpen } = imagesSlice.actions;
+export const { setImages, clearImages, pushToImages, setLimit,setBrowseImages, setCurrentOpen, setFetching } = imagesSlice.actions;
 
 export default imagesSlice.reducer;
