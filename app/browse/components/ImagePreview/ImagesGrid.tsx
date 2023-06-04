@@ -12,7 +12,7 @@ import { ScrollTriggerProvider } from "./ScrollTriggerProvider";
 export default function ImagesGrid({ images }: { images: ImageProps[] }) {
   return (
     <div className="relative pb-32">
-      <ImagePreview />
+      {/* <ImagePreview /> */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-3 mx-auto mt-3">
         {images?.map((image: ImageProps, idx: number) => (
           <div key={idx} className={`relative `}>
