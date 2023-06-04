@@ -8,8 +8,6 @@ export async function GET(req: NextApiRequest) {
   if (headersList.get('host') === "decocanva.com" || "localhost:3000") {
     const images = await getAllImages(50)
     return NextResponse.json(images);
-  }else{
-    return NextResponse.json({error: "Auth failed"})
   }
 
 }

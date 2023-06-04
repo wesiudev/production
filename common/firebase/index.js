@@ -149,13 +149,6 @@ async function updateUserLevel(req) {
   }
 }
 
-//api
-async function getApiKey() {
-  const response = await getDocs();
-  const apiKey = response.docs.map((doc) => doc.data());
-  return apiKey;
-}
-
 //\\///\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\/
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\/
@@ -174,6 +167,4 @@ export {
   updateUserHistory,
   updateUserTutorial,
   updateUserLevel,
-  //api
-  getApiKey,
 };
