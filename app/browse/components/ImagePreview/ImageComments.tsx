@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { AiFillLike, AiFillDislike } from "react-icons/ai";
-import { FaMinus, FaPlus } from "react-icons/fa";
 
 interface ImageComment {
   author: string;

@@ -53,6 +53,7 @@ const Common = dynamic(
 
 export default function Canvas3D({ image }) {
   const dispatch = useDispatch();
+
   return (
     <div className="min-h-screen w-full z-50 bg-white rounded-md sm:min-h-0 sm:h-max sm:p-4 sm:pr-0 sm:pt-1 px-3 overflow-y-scroll scrollbarBlack overflow-x-hidden">
       <div className="pb-6 pt-6 sm:pt-3 flex flex-row justify-between w-full items-center ">
