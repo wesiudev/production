@@ -10,6 +10,8 @@ import { setCurrentOpen } from "@/common/redux/slices/imagesSlice";
 import { useDispatch } from "react-redux";
 import { ImageComments } from "./ImagePreview/ImageComments";
 import { addComment, auth } from "@/common/firebase";
+import { useUserData } from "@/app/hooks/useUserData";
+import Link from "next/link";
 
 const Blob = dynamic(() => import("./canvas/Shapes").then((mod) => mod.Blob), {
   ssr: false,
@@ -53,7 +55,7 @@ const Common = dynamic(
 
 export default function Canvas3D({ image }) {
   const dispatch = useDispatch();
-
+  const { userData } = useUserData();
   return (
     <div className="min-h-screen w-full z-50 bg-white rounded-md sm:min-h-0 sm:h-max sm:p-4 sm:pr-0 sm:pt-1 px-3 overflow-y-scroll scrollbarBlack overflow-x-hidden">
       <div className="pb-6 pt-6 sm:pt-3 flex flex-row justify-between w-full items-center ">
@@ -113,7 +115,7 @@ export default function Canvas3D({ image }) {
           <div className="w-full h-full flex flex-col">
             <ImageComments comments={image?.comments} />
             <div className="relative flex flex-row ">
-              {/* {user && !loading ? (
+              {userData ? (
                 <textarea
                   onChange={(e) => setCommentValue(e.target.value)}
                   value={commentValue}
@@ -134,13 +136,13 @@ export default function Canvas3D({ image }) {
                     to comment
                   </span>
                 </div>
-              )} */}
+              )}
 
               <button
                 onClick={() =>
                   addComment({
                     src: image.src,
-                    userData: user,
+                    userData: userData,
                     commentValue: commentValue,
                   })
                 }
