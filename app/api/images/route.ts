@@ -5,11 +5,11 @@ import { headers } from 'next/headers';
 
 export async function GET(req: NextApiRequest) {
   const headersList = headers();
-  const referer = headersList.get('authorization')
-  if (referer === "AAADWQFVMOZZ9@gmo!movVQWZZwqqfv") {
+  // const referer = headersList.get('authorization')
+  // if (referer === "AAADWQFVMOZZ9@gmo!movVQWZZwqqfv") {
     const images = await getAllImages(5000)
     return NextResponse.json(images);
-  }else{
-    return NextResponse.json({error: "Auth failed"})
-  }
+  // }else{
+  //   return NextResponse.json({error: "Auth failed"})
+  // }
 }
