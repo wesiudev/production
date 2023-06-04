@@ -6,6 +6,7 @@ import React from "react";
 import { Button } from "./Button";
 import { ImagePreview } from "./ImagePreview";
 import { ScrollTrigger } from "./ScrollTrigger";
+import { ScrollTriggerProvider } from "./ScrollTriggerProvider";
 // import Canvas3D from "./Canvas3D";
 // import { Layout } from "../components/dom/Layout";
 export default function ImagesGrid({ images }: { images: ImageProps[] }) {
@@ -33,7 +34,9 @@ export default function ImagesGrid({ images }: { images: ImageProps[] }) {
           </div>
         ))}
       </div>
-      {/* <ScrollTrigger /> */}
+      <ScrollTriggerProvider>
+        <ScrollTrigger />
+      </ScrollTriggerProvider>
     </div>
   );
 }
