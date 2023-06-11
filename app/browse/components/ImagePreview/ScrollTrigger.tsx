@@ -11,7 +11,7 @@ export function ScrollTrigger() {
   const isFetching = useSelector((state: RootState) => state.images.isFetching);
   const nodeRef = useRef<any>();
   const isVisible = useIsVisible(nodeRef);
-  const images = useSelector((state: RootState) => state.images.browseImages);
+
   useEffect(() => {
     (async () => {
       if (isVisible) {

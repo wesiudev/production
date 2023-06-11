@@ -13,12 +13,13 @@ const Layout = ({ children }) => {
       ref={ref}
       style={{
         position: "absolute",
-        width: "100%",
+        width: "103%",
         height: "100%",
         overflow: "auto",
         touchAction: "auto",
         left: "0px",
         top: "0px",
+        padding: "0 6px",
       }}
     >
       {children}

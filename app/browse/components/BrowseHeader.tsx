@@ -8,7 +8,7 @@ export const BrowseHeader = () => {
         <span className="">Explore</span>
         <span className="text-lg"> the Art of OpenAI </span>
       </div>
-      <div className="fixed w-full h-16 bottom-0 left-0 flex flex-row items-center justify-evenly text-gray-100 bg-purple-800 z-50">
+      <div className="fixed sm:z-[999] w-full h-16 bottom-0 left-0 flex flex-row items-center justify-evenly text-gray-100 bg-purple-800">
         <Link
           href="/"
           className="flex sm:flex-row flex-col items-center justify-center hover:bg-purple-700 w-full h-full"

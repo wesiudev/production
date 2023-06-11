@@ -10,6 +10,7 @@ export default async function BrowseImages() {
   });
   const data = await req.json();
   store.dispatch(setBrowseImages(data));
+
   return (
     <div className="flex flex-col font-sans items-center align-middle">
       <div className="w-[90vw] sm:w-3/4">

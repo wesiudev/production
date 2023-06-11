@@ -14,7 +14,7 @@ export default function Header() {
   const [user, loading] = useAuthState(auth);
   return (
     <>
-      <header className="bg-gradient-to-r from-zinc-900 via-white-900 to-purple-800 fixed left-0 top-0 w-full z-40 font-sans">
+      <header className="bg-gradient-to-r from-zinc-900 via-white-900 to-purple-800 fixed left-0 top-0 w-full z-[1000] font-sans">
         <div className="w-[90vw] mx-auto flex flex-row justify-between py-3">
           <div className="flex flex-row w-max h-max">
             <Link

@@ -8,12 +8,15 @@ import { Button } from "./Button";
 import { ImagePreview } from "./ImagePreview";
 import { ScrollTrigger } from "./ScrollTrigger";
 import { ScrollTriggerProvider } from "./ScrollTriggerProvider";
-import { RootState } from "@/common/redux/store";
+import { RootState, store } from "@/common/redux/store";
 import { useSelector } from "react-redux";
 // import Canvas3D from "./Canvas3D";
 // import { Layout } from "../components/dom/Layout";
 export default function ImagesGrid({ images }: { images: ImageProps[] }) {
-  const limit = useSelector((state: RootState) => state.images.limit);
+  const { limit, browseImages } = useSelector(
+    (state: RootState) => state.images
+  );
+
   return (
     <div className="relative pb-32">
       <ImagePreview />

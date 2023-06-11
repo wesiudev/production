@@ -1,17 +1,13 @@
 "use client";
 import dynamic from "next/dynamic";
 import capitalizeString from "@/app/utils/CapitalizeString";
-import { FaImage, FaStar, FaWindowClose } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaStar } from "react-icons/fa";
+import { GiCardRandom } from "react-icons/gi";
 import { MdEuroSymbol } from "react-icons/md";
-import { BsSendFill } from "react-icons/bs";
 import moment from "moment";
 import Hero from "@/app/auth/hero/Hero";
 import { setCurrentOpen } from "@/common/redux/slices/imagesSlice";
-import { useDispatch } from "react-redux";
-import { ImageComments } from "./ImagePreview/ImageComments";
-import { addComment, auth } from "@/common/firebase";
-import { useUserData } from "@/app/hooks/useUserData";
-import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
 
 const Blob = dynamic(() => import("./canvas/Shapes").then((mod) => mod.Blob), {
   ssr: false,
@@ -55,29 +51,54 @@ const Common = dynamic(
 
 export default function Canvas3D({ image }) {
   const dispatch = useDispatch();
-  const { userData } = useUserData();
+  const { randomImages } = useSelector((state) => state.images);
   return (
-    <div className="min-h-screen w-full z-50 bg-white rounded-md sm:min-h-0 sm:h-max sm:p-4 sm:pr-0 sm:pt-1 px-3 overflow-y-scroll scrollbarBlack overflow-x-hidden">
-      <div className="pb-6 pt-6 sm:pt-3 flex flex-row justify-between w-full items-center ">
-        <span className=" pl-1 text-2xl flex flex-row items-center">
-          <FaImage className="mr-1" />
-          Canvas preview
-        </span>
-        <button
-          onClick={() => {
-            dispatch(setCurrentOpen(""));
-          }}
-        >
-          <FaWindowClose className="h-8 w-8 mr-1" />
-        </button>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-3">
-        <div className="bg-purple-950">
+    <div className="h-screen sm:h-[92vh] w-full z-50 bg-purple-950 rounded-md overflow-y-scroll scrollbarBlack overflow-x-hidden select-none">
+      <div className="flex flex-col-reverse sm:grid sm:grid-cols-2 sm:gap-x-3 h-full relative mx-auto w-full">
+        <div className="flex flex-col px-0 sm:px-3  sm:pt-0 relative my-auto  text-white w-screen h-full sm:h-3/5">
+          <div className="flex flex-col justify-center h-full relative w-full sm:w-3/4 mx-auto px-4">
+            <button
+              onClick={() => {
+                dispatch(setCurrentOpen(""));
+              }}
+              className="italic text-gray-500 py-4 flex flex-row items-center fixed top-12 left-12 z-[1001]"
+            >
+              <FaArrowLeft className="mr-2" /> Back to the shop
+            </button>
+            <div className="flex flex-col bg-opacity-90 bg-purple-950 sm:bg-transparent">
+              <div className="z-50 lg:mt-0 w-full flex flex-col">
+                <span className="text-2xl text-left sm:w-full">
+                  {capitalizeString(image.prompt)}
+                </span>
+                <div className="pt-2">
+                  Created {moment(image.creationTime).fromNow()}
+                </div>
+              </div>
+
+              <div className="flex flex-row sm:pb-2 sm:pt-2">
+                <FaStar className="text-yellow-500 hover:text-yellow-400" />
+                <FaStar className="text-yellow-500 ml-px hover:text-yellow-400" />
+                <FaStar className="text-yellow-500 ml-px hover:text-yellow-400" />
+                <FaStar className="text-yellow-500 ml-px hover:text-yellow-400" />
+                <FaStar className="text-yellow-500 ml-px hover:text-yellow-400" />
+              </div>
+              <div className="flex flex-row justify-between sm:flex-col sm:justify-center pt-6 pb-12 sm:pb-3 w-full">
+                <div className=" text-4xl flex flex-row items-center">
+                  <MdEuroSymbol /> 45
+                </div>
+                <button className="sm:mt-6 shadow-sm shadow-black z-[999] font-bold italic text-2xl flex flex-row items-center bg-gradient-to-bl from-rose-500 to-purple-900 py-2 px-5 text-white rounded-lg w-max ">
+                  Buy on canvas
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Hero />
+        <div className="bg-purple-950 w-full sm:w-3/4 h-[50vh] sm:h-full sm:pt-0 bg-red-500">
           <div className="w-full h-full relative">
-            <Hero />
             <View
               orbit
-              className="min-h-[60vh] lg:h-full w-full lg:w-full relative  ml-1 rounded-md"
+              className="min-h-0 h-[50vh] sm:min-h-[60vh] lg:h-full relative rounded-md"
             >
               <Blob
                 image={image}
@@ -86,80 +107,6 @@ export default function Canvas3D({ image }) {
               <Common />
             </View>
           </div>
-        </div>{" "}
-        <div className="flex flex-col px-3 sm:pt-0 relative">
-          <div className="z-50 lg:mt-0 w-full">
-            <span className="text-xl text-left w-full">
-              {capitalizeString(image.prompt)}
-            </span>
-          </div>
-          <div className="pt-1">
-            Added {moment(image.creationTime).fromNow()}
-            {/* <FaThumbsUp />{" "} */}
-          </div>
-          <div className="flex flex-row pb-2 pt-2">
-            <FaStar className="text-yellow-500" />
-            <FaStar className="text-yellow-500 ml-px" />
-            <FaStar className="text-yellow-500 ml-px" />
-            <FaStar className="text-yellow-500 ml-px" />
-            <FaStar className="text-yellow-500 ml-px" />
-          </div>
-          <div className="flex flex-row items-center pt-6 pb-3 w-full justify-between">
-            <div className=" text-4xl flex flex-row items-center">
-              <MdEuroSymbol /> 45
-            </div>
-            <button className="bg-purple-500 w-max text-white px-3 py-2 rounded-sm ml-2">
-              Buy on canvas
-            </button>
-          </div>
-          <div className="w-full h-full flex flex-col">
-            <ImageComments comments={image?.comments} />
-            <div className="relative flex flex-row ">
-              {userData ? (
-                <textarea
-                  onChange={(e) => setCommentValue(e.target.value)}
-                  value={commentValue}
-                  placeholder="Add comment"
-                  className="bg-gray-200 w-full px-3 pt-3 resize-none focus:outline-none max-h-12"
-                />
-              ) : (
-                <div
-                  onFocus={() => setPopupOpen(true)}
-                  placeholder="Add comment"
-                  className="bg-gray-200 w-full px-3 pt-3 resize-none focus:outline-none max-h-12"
-                >
-                  <span className="text-gray-700">
-                    <Link href="/auth" className="text-blue-600">
-                      {" "}
-                      Sign in{" "}
-                    </Link>{" "}
-                    to comment
-                  </span>
-                </div>
-              )}
-
-              <button
-                onClick={() =>
-                  addComment({
-                    src: image.src,
-                    userData: userData,
-                    commentValue: commentValue,
-                  })
-                }
-                className="bg-purple-500 text-white w-12 h-12 flex justify-center items-center"
-              >
-                <BsSendFill />
-              </button>
-            </div>
-          </div>
-          <button
-            onClick={() => {
-              dispatch(setCurrentOpen(""));
-            }}
-            className="italic text-gray-700 py-4 sm:hidden"
-          >
-            Close window
-          </button>
         </div>
       </div>
     </div>
