@@ -48,58 +48,57 @@ export default function FirstGenerationPopup(props: any) {
         const imageRef = ref(storage, `image-${pseudoRandomName}`);
         uploadString(imageRef, imageResponse, "base64", {
           contentType: "text/plain",
-        }).then(
-          () =>
-            getDownloadURL(imageRef).then((url) => {
-              const req = {
-                author: userData?.email,
-                comments: [],
-                creationTime: Date.now(),
-                isPublic: true,
-                likes: 0,
-                prompt: userPrompt,
-                src: url,
-              };
-              addImage(req),
-                dispatch(pushToImages(req)),
-                setHasImage(false),
-                updateUserLevel({
-                  email: userData?.email,
-                  level: level,
-                  accountExperience: userData.accountExperience,
-                  pointsToAdd: 6,
-                  pointsNeeded: pointsNeeded,
-                }).then(() =>
-                  dispatch(
-                    setAccountExperience({
-                      pointsToAdd: 6,
-                      accountLevel: level,
-                      accountExperience: userData.accountExperience,
-                      pointsNeeded: pointsNeeded,
-                    })
-                  )
-                ),
-                //animate the progress bar with user experience...
-                dispatch(setLevelAnimated(false));
-              calculateLevel(
-                userData.accountLevel,
-                userData.accountExperience,
-                6
-              );
-              toast.update(id, {
-                render: Msg,
-                type: "success",
-                isLoading: false,
-                closeOnClick: true,
-                autoClose: 5000,
-                onClose: () => (
-                  setHasImage(false), setIsGenerationTriggered(false)
-                  // redirect("/backpack")
-                ),
-              });
-            }),
-          setIsGenerationTriggered(false)
+        }).then(() =>
+          getDownloadURL(imageRef).then((url) => {
+            const req = {
+              author: userData?.email,
+              comments: [],
+              creationTime: Date.now(),
+              isPublic: true,
+              likes: 0,
+              prompt: userPrompt,
+              src: url,
+            };
+            addImage(req),
+              dispatch(pushToImages(req)),
+              setHasImage(false),
+              updateUserLevel({
+                email: userData?.email,
+                level: level,
+                accountExperience: userData.accountExperience,
+                pointsToAdd: 6,
+                pointsNeeded: pointsNeeded,
+              }).then(() =>
+                dispatch(
+                  setAccountExperience({
+                    pointsToAdd: 6,
+                    accountLevel: level,
+                    accountExperience: userData.accountExperience,
+                    pointsNeeded: pointsNeeded,
+                  })
+                )
+              ),
+              //animate the progress bar with user experience...
+              dispatch(setLevelAnimated(false));
+            calculateLevel(
+              userData.accountLevel,
+              userData.accountExperience,
+              6
+            );
+            toast.update(id, {
+              render: Msg,
+              type: "success",
+              isLoading: false,
+              closeOnClick: true,
+              autoClose: 5000,
+              onClose: () => (
+                setHasImage(false), setIsGenerationTriggered(false)
+                // redirect("/backpack")
+              ),
+            });
+          })
         );
+        setHasImage(false), setIsGenerationTriggered(false);
       } catch (err: any) {
         displayError(err.message);
       }

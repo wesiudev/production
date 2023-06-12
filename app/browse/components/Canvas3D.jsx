@@ -53,10 +53,10 @@ export default function Canvas3D({ image }) {
   const dispatch = useDispatch();
   const { randomImages } = useSelector((state) => state.images);
   return (
-    <div className="h-screen sm:h-[92vh] w-full z-50 bg-purple-950 rounded-md overflow-y-scroll scrollbarBlack overflow-x-hidden select-none">
-      <div className="flex flex-col-reverse sm:grid sm:grid-cols-2 sm:gap-x-3 h-full relative mx-auto w-full">
-        <div className="flex flex-col px-0 sm:px-3  sm:pt-0 relative my-auto  text-white w-screen h-full sm:h-3/5">
-          <div className="flex flex-col justify-center h-full relative w-full sm:w-3/4 mx-auto px-4">
+    <div className="h-screen lg:h-[92vh] w-full z-50 bg-purple-950 rounded-md overflow-y-scroll scrollbarBlack overflow-x-hidden select-none">
+      <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 lg:gap-x-3 h-full relative mx-auto w-full">
+        <div className="flex flex-col px-0 lg:px-3  lg:pt-0 relative my-auto  text-white w-screen h-full lg:h-3/5">
+          <div className="flex flex-col justify-center h-full relative w-full lg:w-3/4 mx-auto px-4">
             <button
               onClick={() => {
                 dispatch(setCurrentOpen(""));
@@ -65,9 +65,9 @@ export default function Canvas3D({ image }) {
             >
               <FaArrowLeft className="mr-2" /> Back to the shop
             </button>
-            <div className="flex flex-col bg-opacity-90 bg-purple-950 sm:bg-transparent">
+            <div className="flex flex-col bg-opacity-90 bg-purple-950 lg:bg-transparent">
               <div className="z-50 lg:mt-0 w-full flex flex-col">
-                <span className="text-2xl text-left sm:w-full">
+                <span className="text-2xl text-left lg:w-full">
                   {capitalizeString(image.prompt)}
                 </span>
                 <div className="pt-2">
@@ -75,30 +75,33 @@ export default function Canvas3D({ image }) {
                 </div>
               </div>
 
-              <div className="flex flex-row sm:pb-2 sm:pt-2">
+              <div className="flex flex-row lg:pb-2 lg:pt-2">
                 <FaStar className="text-yellow-500 hover:text-yellow-400" />
                 <FaStar className="text-yellow-500 ml-px hover:text-yellow-400" />
                 <FaStar className="text-yellow-500 ml-px hover:text-yellow-400" />
                 <FaStar className="text-yellow-500 ml-px hover:text-yellow-400" />
                 <FaStar className="text-yellow-500 ml-px hover:text-yellow-400" />
               </div>
-              <div className="flex flex-row justify-between sm:flex-col sm:justify-center pt-6 pb-12 sm:pb-3 w-full">
+              <div className="text-xl font-light text-white">
+                Authors{"'"} username is not defined yet
+              </div>
+              {/* <div className="flex flex-row justify-between lg:flex-col lg:justify-center pt-6 pb-12 lg:pb-3 w-full">
                 <div className=" text-4xl flex flex-row items-center">
                   <MdEuroSymbol /> 45
                 </div>
-                <button className="sm:mt-6 shadow-sm shadow-black z-[999] font-bold italic text-2xl flex flex-row items-center bg-gradient-to-bl from-rose-500 to-purple-900 py-2 px-5 text-white rounded-lg w-max ">
+                <button className="lg:mt-6 shadow-sm shadow-black z-[999] font-bold italic text-2xl flex flex-row items-center bg-gradient-to-bl from-rose-500 to-purple-900 py-2 px-5 text-white rounded-lg w-max ">
                   Buy on canvas
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
         <Hero />
-        <div className="bg-purple-950 w-full sm:w-3/4 h-[50vh] sm:h-full sm:pt-0 bg-red-500">
+        <div className="bg-purple-950 w-full lg:w-3/4 h-[50vh] lg:h-full lg:pt-0">
           <div className="w-full h-full relative">
             <View
               orbit
-              className="min-h-0 h-[50vh] sm:min-h-[60vh] lg:h-full relative rounded-md"
+              className="min-h-0 h-[50vh] lg:min-h-[60vh] lg:h-full relative rounded-md"
             >
               <Blob
                 image={image}

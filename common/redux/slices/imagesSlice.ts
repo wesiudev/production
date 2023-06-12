@@ -18,6 +18,9 @@ export const imagesSlice = createSlice({
     setLimit: (state, action) => {
       state.limit = action.payload
     },
+    addImagesToarray: (state, action) => {
+      state.images = [...state.images, action.payload]
+    },
     setFetching: (state, action) => {
       state.isFetching = action.payload
     },
@@ -25,10 +28,6 @@ export const imagesSlice = createSlice({
       state.images = action.payload
       state.loadingImages = false
     },
-    pushToImages: (state, action) => {
-      state.browseImages = [...state.browseImages, action.payload]
-    },
-
     setBrowseImages: (state, action) => {
       state.browseImages = action.payload
     },
@@ -41,6 +40,6 @@ export const imagesSlice = createSlice({
   },
 });
 
-export const { setImages, clearImages, setLimit,setBrowseImages, setCurrentOpen, setFetching, pushToImages } = imagesSlice.actions;
+export const { setImages, clearImages, setLimit,setBrowseImages, setCurrentOpen, setFetching,  addImagesToarray } = imagesSlice.actions;
 
 export default imagesSlice.reducer;
