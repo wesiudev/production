@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import CountingAnimation from "./CountingAnimation";
+import CountingAnimation from "@/app/components/levelsystem/CountingAnimation";
 import { useUserData } from "@/app/hooks/useUserData";
 import { FaCoins, FaHome, FaUser } from "react-icons/fa";
-import { calculateLevel } from "./CalculateLevel";
+import { calculateLevel } from "@/app/components/levelsystem/CalculateLevel";
 
 export const LevelAnimation = () => {
   const { userData } = useUserData();

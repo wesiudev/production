@@ -9,7 +9,7 @@ import { FaImage } from "react-icons/fa";
 import { pushToImages } from "@/common/redux/slices/imagesSlice";
 import { useDispatch } from "react-redux";
 import { useUserData } from "@/app/hooks/useUserData";
-import { calculateLevel } from "@/app/dashboard/LevelSystem/CalculateLevel";
+import { calculateLevel } from "@/app/components/levelsystem/CalculateLevel";
 import {
   setAccountExperience,
   setLevelAnimated,
@@ -38,6 +38,14 @@ export default function FirstGenerationPopup(props: any) {
   const saveImage = async () => {
     if (hasImage)
       try {
+        dispatch(
+          setAccountExperience({
+            pointsToAdd: 6,
+            accountLevel: level,
+            accountExperience: userData.accountExperience,
+            pointsNeeded: pointsNeeded,
+          })
+        );
         const id = toast.loading(
           <span className="font-sans">Saving an image...</span>
         );
@@ -68,33 +76,18 @@ export default function FirstGenerationPopup(props: any) {
                 accountExperience: userData.accountExperience,
                 pointsToAdd: 6,
                 pointsNeeded: pointsNeeded,
-              }).then(() =>
-                dispatch(
-                  setAccountExperience({
-                    pointsToAdd: 6,
-                    accountLevel: level,
-                    accountExperience: userData.accountExperience,
-                    pointsNeeded: pointsNeeded,
-                  })
-                )
-              ),
-              //animate the progress bar with user experience...
-              dispatch(setLevelAnimated(false));
-            calculateLevel(
-              userData.accountLevel,
-              userData.accountExperience,
-              6
-            );
+              }),
+              calculateLevel(
+                userData.accountLevel,
+                userData.accountExperience,
+                6
+              );
             toast.update(id, {
               render: Msg,
               type: "success",
               isLoading: false,
               closeOnClick: true,
               autoClose: 5000,
-              onClose: () => (
-                setHasImage(false), setIsGenerationTriggered(false)
-                // redirect("/backpack")
-              ),
             });
           })
         );

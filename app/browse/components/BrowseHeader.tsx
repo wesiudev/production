@@ -21,7 +21,7 @@ export const BrowseHeader = () => {
           className="flex sm:flex-row flex-col  items-center justify-center hover:bg-purple-700 w-full h-full"
         >
           <FaImages className="h-6 w-6 sm:mr-3" />
-          <span>Shop</span>
+          <span>Browse</span>
         </Link>
         <Link
           href="/"

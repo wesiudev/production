@@ -20,7 +20,7 @@ export const TutorialWindow = (props: TutorialWindow) => {
   return (
     <>
       {isTutorialOpen && (
-        <div className="absolute w-[95vw] min-h-[30vh] sm:w-[75vw] lg:w-[40vw] bg-purple-900 flex flex-col px-3 py-3 sm:px-5 sm:py-5 z-40 font-sans rounded-md left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%]">
+        <div className="fixed w-[95vw] min-h-[30vh] sm:w-[75vw] lg:w-[40vw] bg-purple-900 flex flex-col px-3 py-3 sm:px-5 sm:py-5 font-sans rounded-md left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] z-[999]">
           <div className="flex flex-col">
             <span className="w-max mx-auto text-2xl text-white py-2">
               {tutorialHeadline}

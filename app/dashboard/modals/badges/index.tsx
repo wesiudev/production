@@ -13,7 +13,7 @@ export default function Badges() {
       </div>
       <div className="mt-2 flex flex-col bg-purple-900 text-gray-100 p-5 rounded-md">
         <div className="flex-col text-center text-2xl text-gray-400 mt-1 mb-4 h-full flex items-center justify-center sm:px-5 min-h-[30vh]">
-          asd
+          Comming soon
         </div>
       </div>
     </div>

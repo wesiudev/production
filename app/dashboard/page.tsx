@@ -22,7 +22,7 @@ import moment from "moment";
 import Link from "next/link";
 import Badges from "./modals/badges";
 import InfoHover from "../components/infohover";
-import { calculateLevel } from "./LevelSystem/CalculateLevel";
+import { calculateLevel } from "../components/levelsystem/CalculateLevel";
 export default function Dashboard() {
   const { images, userData, loading } = useUserData();
   const dispatch = useDispatch();

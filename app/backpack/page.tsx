@@ -1,13 +1,11 @@
 "use client";
 import Link from "next/link";
-import { FaArrowLeft, FaPlus } from "react-icons/fa";
-import { BsInfoCircleFill } from "react-icons/bs";
+import { FaArrowLeft, FaTools } from "react-icons/fa";
 import BackpackImageThumbnail from "./components/ImageThumbnail";
 import { FakeItem } from "./components/FakeItem";
 import { ImageProps } from "@/types";
 import { useUserData } from "../hooks/useUserData";
 import { redirect } from "next/navigation";
-import Info from "../components/info";
 import { useSelector } from "react-redux";
 import { RootState } from "@/common/redux/store";
 import moment from "moment";
@@ -49,7 +47,9 @@ export default function Backpack() {
           <div className="w-full ml-3 italic flex flex-row justify-between">
             <span>Backpack</span>{" "}
             <div className="bg-gradient-to-tr from-rose-500  to-purple-950 hover:from-rose-500 hover:to-purple-900 duration-75 ease-in  items-center justify-center shadow-sm shadow-black py-2 px-4 text-center mx-auto lg:mx-0 bg-purple-900 hover:bg-purple-800 text-gray-50 hover:transition-transform w-max text-2xl rounded-lg">
-              <Link href="/backpack/generator/text">Generator</Link>
+              <Link href="/generator/" className="flex flex-row items-center">
+                <FaTools className="mr-1" /> Render tools
+              </Link>
             </div>
           </div>
         </div>

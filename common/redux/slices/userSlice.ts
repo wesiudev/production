@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 const initialState: any = {
   userData: {},
-  levelAnimated: true,
+  wasLevelUp: false
 };
 
 export const userSlice = createSlice({
@@ -21,12 +21,16 @@ export const userSlice = createSlice({
       if (action.payload.pointsToAdd + action.payload.accountExperience > action.payload.pointsNeeded) {
         state.userData.accountExperience = state.userData.accountExperience+action.payload.pointsToAdd-action.payload.pointsNeeded
         state.userData.accountLevel += 1
+        state.wasLevelUp = true
       }else{
         state.userData.accountExperience += action.payload.pointsToAdd
       }
     },
     setLevelAnimated:(state, action:PayloadAction<any>) => {
       state.levelAnimated = action.payload
+    },
+    setWasLevelUp:(state, action:PayloadAction<boolean>) => {
+      state.wasLevelUp = action.payload
     },
     logout: (state) => {
       state.userData = {}

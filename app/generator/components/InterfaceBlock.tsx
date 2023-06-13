@@ -17,7 +17,7 @@ export default function InterfaceBlock({
 }: InterfaceBlock) {
   return (
     <Link
-      href={`/backpack/generator/${destination}`}
+      href={`/generator/${destination}`}
       className="group aspect-square bg-gradient-to-br from-purple-950 to-purple-800  cursor-pointer rounded-lg shadow-sm shadow-black"
     >
       <div className="flex flex-col items-center justify-center h-full relative overflow-hidden">

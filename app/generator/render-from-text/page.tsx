@@ -4,11 +4,11 @@ import { FaArrowRight, FaInfoCircle } from "react-icons/fa";
 import { TutorialWindow } from "../components/TutorialWindow";
 import tutorial from "./tutorial.json";
 import { useState } from "react";
-import GenerateButton from "../../empty/GenerateButton";
 import { CreateImageRequestSizeEnum } from "openai";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import FirstGenerationPopup from "../../empty/FirstGenerationPopup";
+import FirstGenerationPopup from "@/app/backpack/empty/FirstGenerationPopup";
+import GenerateButton from "@/app/backpack/empty/GenerateButton";
 export default function RenderFromText() {
   const [isTutorialOpen, setTutorialOpen] = useState(false);
   const [isGenerationPending, setIsGenerationPending] =

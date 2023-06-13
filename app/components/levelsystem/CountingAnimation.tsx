@@ -1,5 +1,7 @@
 "use client";
+import { RootState } from "@/common/redux/store";
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 interface CountingAnimationProps {
   start: number;
@@ -12,8 +14,8 @@ const CountingAnimation: React.FC<CountingAnimationProps> = ({
   end,
   duration,
 }) => {
+  const wasLevelUp = useSelector((state: RootState) => state.user.wasLevelUp);
   const [count, setCount] = useState<number>(start);
-  const [levelUpAnimation, setLevelUpAnimation] = useState(false);
   const total = start + end;
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const CountingAnimation: React.FC<CountingAnimationProps> = ({
       const progress = elapsedTime / duration;
 
       if (progress >= 1) {
-        if (total > 100) {
+        if (total >= 100) {
           const surplus = total - 100;
           setCount(Math.floor(progress * surplus));
         } else {
@@ -33,7 +35,7 @@ const CountingAnimation: React.FC<CountingAnimationProps> = ({
         }
         clearInterval(interval);
         if (end >= 100) {
-          setLevelUpAnimation(true);
+          setCount(0);
         }
       } else {
         setCount(
@@ -56,10 +58,11 @@ const CountingAnimation: React.FC<CountingAnimationProps> = ({
           style={{
             transform: `translateX(${count}%)`,
           }}
-          className={`bg-green-600 absolute top-0 h-6 w-full -left-[100%]`}
+          className={`bg-gradient-to-r from-green-600 to-green-500 absolute top-0 h-6 w-full -left-[100%]`}
         >
           {" "}
         </div>
+
         <div className="flex flex-row pb-2 relative w-full">
           <div className="absolute top-0 h-3 left-[50%] -translate-x-[50%]">
             <span>
@@ -70,11 +73,14 @@ const CountingAnimation: React.FC<CountingAnimationProps> = ({
           </div>
         </div>
       </div>
-      {levelUpAnimation === true && (
-        <div className="absolute -top-6 left-[50%] -translate-x-[50%]">
-          <span>Level up!</span>
-        </div>
-      )}
+      <div
+        className={`absolute -top-6 left-[50%] -translate-x-[50%] translate-y-8 bg-green-500 p-3 scale-0 duration-200 ${
+          wasLevelUp === true &&
+          "scale-150 duration-300 translate-y-[-30px] rounded-md"
+        }`}
+      >
+        <span>Level up!</span>
+      </div>
     </div>
   );
 };

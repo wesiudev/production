@@ -1,6 +1,6 @@
 "use client";
-import { calculateLevel } from "@/app/dashboard/LevelSystem/CalculateLevel";
-import { LevelAnimation } from "@/app/dashboard/LevelSystem/LevelAnimation";
+import { calculateLevel } from "@/app/components/levelsystem/CalculateLevel";
+import { LevelAnimation } from "@/app/components/levelsystem/LevelAnimation";
 import { useUserData } from "@/app/hooks/useUserData";
 import { setLevelAnimated } from "@/common/redux/slices/userSlice";
 import { RootState } from "@/common/redux/store";
