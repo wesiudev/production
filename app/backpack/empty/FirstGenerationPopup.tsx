@@ -1,24 +1,15 @@
 import React from "react";
-import Typewriter from "typewriter-effect";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { addImage, storage, updateUserLevel } from "@/common/firebase";
 import Image from "next/image";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Msg } from "./MsgSuccess";
-import {
-  FaArrowCircleLeft,
-  FaArrowDown,
-  FaArrowRight,
-  FaImage,
-} from "react-icons/fa";
+import { FaArrowCircleLeft, FaImage } from "react-icons/fa";
 import { pushToImages } from "@/common/redux/slices/imagesSlice";
 import { useDispatch } from "react-redux";
 import { useUserData } from "@/app/hooks/useUserData";
 import { calculateLevel } from "@/app/components/levelsystem/CalculateLevel";
-import {
-  setAccountExperience,
-  setLevelAnimated,
-} from "@/common/redux/slices/userSlice";
+import { setAccountExperience } from "@/common/redux/slices/userSlice";
 import Hero from "@/app/auth/hero/Hero";
 import capitalizeString from "@/app/utils/CapitalizeString";
 
@@ -34,7 +25,6 @@ export default function FirstGenerationPopup(props: any) {
     setImageLoaded,
     displayError,
     setHasImage,
-    isError,
   } = props;
   const { userData } = useUserData();
   const { level, pointsNeeded } = calculateLevel(
@@ -147,7 +137,7 @@ export default function FirstGenerationPopup(props: any) {
 
               <div className="rounded-md h-full w-full text-2xl text-gray-50 flex justify-center items-center">
                 {!imageLoaded && (
-                  <div className="w-full min-h-[50vh] sm:h-[60vh] bg-white bg-opacity-80 flex items-center justify-center">
+                  <div className="w-full min-h-[50vh] sm:h-[60vh] bg-purple-700 bg-opacity-80 flex items-center justify-center">
                     <svg
                       aria-hidden="true"
                       className="w-16 h-16 mr-3 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600"
