@@ -5,7 +5,10 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 import { Msg } from "./MsgSuccess";
 import { FaArrowCircleLeft, FaImage } from "react-icons/fa";
-import { pushToImages } from "@/common/redux/slices/imagesSlice";
+import {
+  addImagesToArray,
+  pushToImages,
+} from "@/common/redux/slices/imagesSlice";
 import { useDispatch } from "react-redux";
 import { useUserData } from "@/app/hooks/useUserData";
 import { calculateLevel } from "@/app/components/levelsystem/CalculateLevel";

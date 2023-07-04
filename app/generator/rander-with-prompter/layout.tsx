@@ -4,7 +4,7 @@ export const metadata = {
   icons: {
     icon: "/favicon.png",
   },
-  title: `Decocanva - Dashboard - Free Image Generator`,
+  title: `Decocanva - Generate With Prompter - Free Image Generator`,
   themeColor: "black",
   authors: [
     { name: "wesiu.dev" },
@@ -13,7 +13,7 @@ export const metadata = {
     { name: "decocanva.com" },
   ],
 };
-export default function DashboardLayout({
+export default function RenderWithPrompterLayout({
   children,
 }: {
   children: React.ReactNode;

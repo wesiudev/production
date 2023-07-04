@@ -1,12 +1,13 @@
 import { Providers } from "@/common/redux/Provider";
 import "../styles/globals.css";
 import localFont from "next/font/local";
+
 export const metadata = {
   viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: "/favicon.png",
   },
-  title: "Decocanva - Explore Images Powered by OpenAI",
+  title: "Decocanva - Home - Free Image Generator",
   themeColor: "black",
   authors: [{ name: "wesiudev" }],
 };
@@ -47,8 +48,6 @@ const cocosharp = localFont({
   variable: "--font-cocosharp",
 });
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
 export default function RootLayout({
   children,
 }: {

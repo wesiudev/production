@@ -16,6 +16,8 @@ import {
   updateDoc,
   doc,
   arrayUnion,
+  startAt,
+  endAt,
 } from "firebase/firestore/lite";
 import { getStorage } from "firebase/storage";
 
@@ -41,7 +43,7 @@ const storage = getStorage(app);
 
 const imagesRef = collection(db, "images");
 
-async function getAllImages(count) {
+async function getPrimaryImages(count) {
   const filter = query(
     imagesRef,
     orderBy("creationTime", "desc"),
@@ -51,12 +53,11 @@ async function getAllImages(count) {
   const images = response.docs.map((doc) => doc.data());
   return images;
 }
-async function getUserImages(email, count) {
+async function getUserImages(email) {
   const filter = query(
     imagesRef,
     orderBy("creationTime", "desc"),
-    where("author", "==", email),
-    limit(count)
+    where("author", "==", email)
   );
   const response = await getDocs(filter);
   const images = response.docs.map((doc) => doc.data());
@@ -160,7 +161,7 @@ export {
   //images
   getUserImages,
   addImage,
-  getAllImages,
+  getPrimaryImages,
   addComment,
   //users
   getUser,

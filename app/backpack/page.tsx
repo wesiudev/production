@@ -9,22 +9,42 @@ import { redirect } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/common/redux/store";
 import moment from "moment";
-
+import React from "react";
+export const metadata = {
+  viewport: "width=device-width, initial-scale=1",
+  icons: {
+    icon: "/favicon.png",
+  },
+  title: `Decocanva - Backpack - Free Image Generator`,
+  themeColor: "black",
+  authors: [
+    { name: "wesiu.dev" },
+    { name: "OpenAI Image Generator API" },
+    { name: "React" },
+    { name: "decocanva.com" },
+  ],
+};
 export default function Backpack() {
   const { images } = useUserData();
-  const preparedData = [
-    {
-      today: images.filter((image: ImageProps) =>
-        moment(image?.creationTime).isSame(moment(), "day")
-      ),
-      yesterday: images.filter((image: ImageProps) =>
-        moment(image?.creationTime).isSame(moment().subtract(1, "day"), "day")
-      ),
-      older: images.filter((image: ImageProps) =>
-        moment(image?.creationTime).isBefore(moment().subtract(1, "day"), "day")
-      ),
-    },
-  ];
+  const [preparedData, setPreparedData] = React.useState<any>([]);
+  React.useEffect(() => {
+    setPreparedData([
+      {
+        today: images.filter((image: ImageProps) =>
+          moment(image?.creationTime).isSame(moment(), "day")
+        ),
+        yesterday: images.filter((image: ImageProps) =>
+          moment(image?.creationTime).isSame(moment().subtract(1, "day"), "day")
+        ),
+        older: images.filter((image: ImageProps) =>
+          moment(image?.creationTime).isBefore(
+            moment().subtract(1, "day"),
+            "day"
+          )
+        ),
+      },
+    ]);
+  }, [images]);
   const { loadingImages } = useSelector((state: RootState) => state.images);
   if (!images.length && !loadingImages) {
     redirect("/backpack/empty");
@@ -64,13 +84,13 @@ export default function Backpack() {
       </div>
 
       <div className="mt-12">
-        {images.length ? (
+        {images.length > 0 && (
           <>
             {preparedData?.map((timestamp: any, idx: number) => (
               <>
                 {timestamp.today.length > 0 && (
                   <>
-                    <span className="text-3xl font-light text-purple-200">
+                    <span className="text-3xl font-light text-purple-100">
                       Today
                     </span>
                     <div
@@ -142,17 +162,6 @@ export default function Backpack() {
               </Link>
             </div>
           </>
-        ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-            <FakeItem />
-          </div>
         )}
       </div>
     </div>
