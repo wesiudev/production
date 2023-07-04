@@ -1,18 +1,5 @@
 "use client";
-export const metadata = {
-  viewport: "width=device-width, initial-scale=1",
-  icons: {
-    icon: "/favicon.png",
-  },
-  title: `Decocanva - Dashboard - Free Image Generator`,
-  themeColor: "black",
-  authors: [
-    { name: "wesiu.dev" },
-    { name: "OpenAI Image Generator API" },
-    { name: "React" },
-    { name: "decocanva.com" },
-  ],
-};
+
 export default function DashboardLayout({
   children,
 }: {

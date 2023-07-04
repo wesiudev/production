@@ -10,20 +10,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/common/redux/store";
 import moment from "moment";
 import React from "react";
-export const metadata = {
-  viewport: "width=device-width, initial-scale=1",
-  icons: {
-    icon: "/favicon.png",
-  },
-  title: `Decocanva - Backpack - Free Image Generator`,
-  themeColor: "black",
-  authors: [
-    { name: "wesiu.dev" },
-    { name: "OpenAI Image Generator API" },
-    { name: "React" },
-    { name: "decocanva.com" },
-  ],
-};
+
 export default function Backpack() {
   const { images } = useUserData();
   const [preparedData, setPreparedData] = React.useState<any>([]);
