@@ -11,6 +11,9 @@ export const metadata = {
   themeColor: "black",
   authors: [{ name: "wesiudev" }],
 };
+
+export const dynamic = "auto";
+
 const cocosharp = localFont({
   src: [
     {
