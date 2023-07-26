@@ -1,5 +1,3 @@
-"use client";
-import { auth } from "../../../common/firebase";
 import {
   FaBlog,
   FaImage,
@@ -9,9 +7,8 @@ import {
   FaUser,
 } from "react-icons/fa";
 import Link from "next/link";
-import { useUserData } from "@/app/hooks/useUserData";
+
 export default function Header() {
-  const { userData } = useUserData();
   return (
     <>
       <header className="bg-gradient-to-r from-zinc-900 via-white-900 to-purple-800 fixed left-0 top-0 w-full z-[1000] font-sans">
@@ -48,23 +45,13 @@ export default function Header() {
             </Link>
           </div>
           <div className="cursor-pointer flex flex-row justify-center items-center">
-            {!userData && (
-              <Link href="/auth">
-                <div className="flex flex-row items-center">
-                  {" "}
-                  <FaSignInAlt className="mr-2 h-7 w-7 text-gray-50" />
-                  <span className="text-gray-50">Sign in</span>
-                </div>
-              </Link>
-            )}
-            {userData && (
-              <Link href="/dashboard">
-                <div className="flex flex-row items-center  text-gray-50">
-                  <FaUser className="mr-2 h-6 w-6" />
-                  <span>My account</span>
-                </div>
-              </Link>
-            )}
+            <Link href="/auth">
+              <div className="flex flex-row items-center">
+                {" "}
+                <FaSignInAlt className="mr-2 h-7 w-7 text-gray-50" />
+                <span className="text-gray-50">Sign in</span>
+              </div>
+            </Link>
           </div>
         </div>
       </header>

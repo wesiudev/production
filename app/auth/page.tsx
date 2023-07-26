@@ -12,11 +12,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import GoogleAuthButtons from "./GoogleAuth";
 import Hero from "./hero/Hero";
 import { Canvas } from "@react-three/fiber";
-// import FadingImage from "./hero/Images";
+import FadingImage from "./hero/Images";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
-import { FaEnvelope, FaKey } from "react-icons/fa";
+import { FaArrowCircleUp, FaEnvelope, FaKey } from "react-icons/fa";
 import Loading from "./loading";
 
 export default function Login() {
@@ -108,8 +108,8 @@ export default function Login() {
   }
   return (
     <>
-      <section className="flex flex-col md:flex-row h-screen items-center font-sans">
-        <div className="bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900 hidden lg:block w-full md:w-3/5 xl:w-2/3 h-screen relative">
+      <section className="flex flex-col md:flex-row lg:max-h-screen items-center font-sans overflow-x-hidden">
+        <div className="bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900  w-full md:w-3/5 xl:w-2/3 lg:max-h-screen relative  lg:overflow-hidden">
           <div
             style={{
               position: "absolute",
@@ -128,29 +128,35 @@ export default function Login() {
                 transform: "translate3d(-50%,-50%,0)",
               }}
             ></div>
+          </div>
+          <div className="h-[50vh] md:h-screen w-full flex rounded-lg relative">
+            <div className="absolute hidden md:flex text-white left-[50%] -translate-x-[50%] bottom-24  flex-col items-center">
+              <FaArrowCircleUp className="h-12 w-12 text-white" />
+              <span className="mt-3">Hover over to see more</span>
+            </div>
             <Link href="/">
-              <div className="absolute m-10 text-gray-100 text-xl">
+              <div className="absolute m-10 text-gray-100 text-xl z-[1500]">
                 decocanva
               </div>
             </Link>
-          </div>
-          <div className="h-screen w-full flex rounded-lg">
-            <Canvas
-              style={{ zIndex: "20" }}
-              camera={{ position: [0, 0, 2], fov: 50 }}
-            >
-              {/* <FadingImage /> */}
-            </Canvas>
+            <div className="absolute left-[50%] -translate-x-[50%] top-[50%] -translate-y-[50%] w-[80vw] h-[80vw] sm:w-[40vw] sm:h-[40vw] z-[1500] scale-100 hover:scale-125 sm:opacity-50 hover:opacity-100 duration-150">
+              <Canvas
+                style={{ zIndex: "20" }}
+                camera={{ position: [0, 0, 2], fov: 50 }}
+              >
+                <FadingImage />
+              </Canvas>
+            </div>
           </div>
           <Hero />
         </div>
 
         <div
-          className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-14 xl:px-12
+          className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 sm:h-screen px-6 lg:px-14 xl:px-12
         flex items-center justify-center"
         >
           <div className="w-full h-100">
-            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">
+            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12 text-black">
               {isLoginUser && "Sign in to your account"}
               {!isLoginUser && "Create an account"}
             </h1>
@@ -234,22 +240,22 @@ export default function Login() {
               handleLogout={handleLogout}
             />
             {isLoginUser && (
-              <p className="mt-8">
+              <p className="mt-8 text-black">
                 Need an account?{" "}
                 <a
                   onClick={() => setIsLoginUser(false)}
-                  className="cursor-pointer text-blue-500 hover:text-blue-700 font-semibold"
+                  className="cursor-pointer text-blue-500 hover:text-blue-700 font-bold"
                 >
-                  Create an account
+                  Create one
                 </a>
               </p>
             )}
             {!isLoginUser && (
-              <p className="mt-8">
+              <p className="mt-8 text-black">
                 Already registered?{" "}
                 <a
                   onClick={() => setIsLoginUser(true)}
-                  className="cursor-pointer text-blue-500 hover:text-blue-700 font-semibold"
+                  className="cursor-pointer text-blue-500 hover:text-blue-700 font-bold"
                 >
                   Sign in
                 </a>
