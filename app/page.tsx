@@ -12,7 +12,7 @@ export default async function Home() {
   const images = await getPrimaryImages(12);
   return (
     <div className="relative h-full w-full bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900">
-      {/* <Hero /> */}
+      <Hero />
       <main className="font-sans overflow-x-hidden relative flex items-center min-h-screen  py-2 px-3 lg:px-0">
         <Header />
         <Accents />
