@@ -27,6 +27,7 @@ export default function Login() {
   const [password, setPassword] = useState<string>("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   if (loading) {
     return <Loading />;
   }
@@ -106,49 +107,62 @@ export default function Login() {
       }, 7500);
     }
   }
+
+  setTimeout(() => {
+    setImagesLoaded(true);
+  }, 1000);
   return (
     <>
-      <section className="flex flex-col md:flex-row lg:max-h-screen items-center font-sans overflow-x-hidden">
-        <div className="bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900  w-full md:w-3/5 xl:w-2/3 lg:max-h-screen relative  lg:overflow-hidden">
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              pointerEvents: "none",
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate3d(-50%,-50%,0)",
-              }}
-            ></div>
-          </div>
-          <div className="h-[50vh] md:h-screen w-full flex rounded-lg relative">
-            <div className="absolute hidden md:flex text-white left-[50%] -translate-x-[50%] bottom-24  flex-col items-center">
-              <FaArrowCircleUp className="h-12 w-12 text-white" />
-              <span className="mt-3">Hover over to see more</span>
-            </div>
-            <Link href="/">
-              <div className="absolute m-10 text-gray-100 text-xl z-[1500]">
-                decocanva
-              </div>
-            </Link>
-            <div className="absolute left-[50%] -translate-x-[50%] top-[50%] -translate-y-[50%] w-[80vw] h-[80vw] sm:w-[40vw] sm:h-[40vw] z-[1500] scale-100 hover:scale-125 sm:opacity-50 hover:opacity-100 duration-150">
-              <Canvas
-                style={{ zIndex: "20" }}
-                camera={{ position: [0, 0, 2], fov: 50 }}
+      <section className="flex flex-col md:flex-row lg:-h-screen items-center font-sans overflow-x-hidden">
+        <div className="bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900  w-full md:w-3/5 xl:w-2/3 lg:h-screen relative  lg:overflow-hidden">
+          {imagesLoaded && (
+            <>
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  pointerEvents: "none",
+                  width: "100%",
+                  height: "100%",
+                }}
               >
-                <FadingImage />
-              </Canvas>
-            </div>
-          </div>
-          <Hero />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate3d(-50%,-50%,0)",
+                  }}
+                ></div>
+              </div>
+              <div className="h-[50vh] md:h-[100vh] w-full flex rounded-lg relative">
+                <div className="absolute hidden md:flex text-white left-[50%] -translate-x-[50%] bottom-24  flex-col items-center">
+                  <FaArrowCircleUp className="h-12 w-12 text-white" />
+                  <span className="mt-3">Hover over to see more</span>
+                </div>
+                <Link href="/">
+                  <div className="absolute m-10 text-gray-100 text-xl z-[1502]">
+                    decocanva
+                  </div>
+                </Link>
+                <div className="absolute left-[50%] -translate-x-[50%] top-[50%] -translate-y-[50%] h-[70vh] w-[70vh] z-[1500] scale-100 hover:scale-110 sm:opacity-50 hover:opacity-100 duration-150">
+                  <Canvas
+                    style={{
+                      zIndex: "20",
+                      width: "100%",
+                      height: "100%",
+                      overflow: "visible",
+                    }}
+                    camera={{ position: [0, 0, 2], fov: 40 }}
+                  >
+                    <FadingImage />
+                  </Canvas>
+                </div>
+              </div>
+              <Hero />
+            </>
+          )}
         </div>
 
         <div
@@ -263,7 +277,7 @@ export default function Login() {
             )}
           </div>
           {forgotPassword && (
-            <div className="w-5/6 lg:w-1/3 z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-purple-700 to-purple-950 bg-opacity-50 rounded  px-5 py-6">
+            <div className="w-5/6 lg:w-1/3  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-purple-700 to-purple-950 bg-opacity-50 rounded  px-5 py-6 z-[1605]">
               <div className="space-y-10 flex flex-col justify-start">
                 <label className=" text-gray-100 text-2xl flex flex-row items-center">
                   <FaEnvelope className="mr-1 text-gray-100" />

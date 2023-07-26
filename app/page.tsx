@@ -10,6 +10,7 @@ import { SectionEarn } from "./components/sections/SectionEarn";
 
 export default async function Home() {
   const images = await getPrimaryImages(12);
+
   return (
     <div className="relative h-full w-full bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900">
       <Hero />
@@ -27,23 +28,26 @@ export default async function Home() {
               </span>
             </div>
           </h1>
-          <div className="flex flex-col-reverse sm:flex-row z-30 w-full justify-evenly sm:w-max lg:mt-8">
-            <Link
-              href="/blog"
-              className="py-3 px-5 w-max sm:w-auto bg-transparent sm:bg-gray-500 sm:hover:bg-gray-400 rounded-lg sm:text-xl text-gray-100"
+          <div className="flex z-30 w-full space-x-3 justify-center items-center sm:w-max lg:mt-8 mx-auto sm:mx-0">
+            <a
+              className="py-3 px-5 w-max sm:w-auto bg-gray-500 hover:bg-gray-400 rounded-lg sm:text-xl text-gray-100 cursor-pointer"
+              href="#about"
             >
               Read more
-            </Link>
+            </a>
             <Link
               href="/auth"
-              className="sm:ml-3 py-3 px-5 w-max sm:w-auto bg-purple-700 hover:bg-purple-600 rounded-lg text-gray-100 lg:text-xl"
+              className="sm:ml-3 py-3 px-6 w-max sm:w-auto bg-green-700 hover:bg-green-600 rounded-lg text-gray-100 lg:text-xl"
             >
               Check out
             </Link>
           </div>
         </div>
         <SectionWrapper>
-          <div className="w-[90vw] sm:w-3/4 mx-auto text-xl sm:text-2xl lg:text-3xl flex flex-col mt-12 bg-white px-12 pt-20 rounded-t-md relative">
+          <div
+            id="about"
+            className="w-[90vw] sm:w-3/4 mx-auto text-xl sm:text-2xl lg:text-3xl flex flex-col mt-12 bg-white px-12 pt-20 rounded-t-md relative"
+          >
             <span className="opacity-0 sm:opacity-75 sm:w-16 sm:h-16 xl:w-20 xl:h-20  rounded-full absolute sm:left-12 sm:top-28 lg:left-24 lg:top-24 from-purple-600 to-purple-800 bg-gradient-to-br shadow-sm shadow-black" />
             <span className="opacity-0 sm:opacity-75 w-8 h-8 rounded-full absolute sm:left-6 lg:left-12 top-20 from-purple-600 to-purple-900 bg-gradient-to-tl shadow-sm shadow-black" />
             <div className="pb-10 sm:pb-12 w-max mx-auto flex flex-col">
@@ -96,13 +100,13 @@ export default async function Home() {
                   />
                 ))}
               </div>
-              <Link
+              {/* <Link
                 href="/explore"
                 className="text-purple-600 font-bold text-xl mt-10 text-center flex items-center hover:underline w-max "
               >
                 <FaLink className="mr-1" />
                 See more
-              </Link>
+              </Link> */}
             </div>
             <div className="text-black my-12 text-2xl">
               <div className="h-1 w-24 bg-purple-500 mx-auto mb-10 rounded-md"></div>
