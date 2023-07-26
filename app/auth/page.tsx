@@ -137,16 +137,16 @@ export default function Login() {
                 ></div>
               </div>
               <div className="h-[50vh] md:h-[100vh] w-full flex rounded-lg relative">
-                <div className="absolute hidden md:flex text-white left-[50%] -translate-x-[50%] bottom-24  flex-col items-center">
+                {/* <div className="absolute hidden md:flex text-white left-[50%] -translate-x-[50%] bottom-24  flex-col items-center">
                   <FaArrowCircleUp className="h-12 w-12 text-white" />
                   <span className="mt-3">Hover over to see more</span>
-                </div>
+                </div> */}
                 <Link href="/">
                   <div className="absolute m-10 text-gray-100 text-xl z-[1502]">
                     decocanva
                   </div>
                 </Link>
-                <div className="absolute left-[50%] -translate-x-[50%] top-[50%] -translate-y-[50%] h-[70vh] w-[70vh] z-[1500] scale-100 hover:scale-110 sm:opacity-50 hover:opacity-100 duration-150">
+                {/* <div className="absolute left-[50%] -translate-x-[50%] top-[50%] -translate-y-[50%] h-[70vh] w-[70vh] z-[1500] scale-100 hover:scale-110 sm:opacity-50 hover:opacity-100 duration-150">
                   <Canvas
                     style={{
                       zIndex: "20",
@@ -158,7 +158,7 @@ export default function Login() {
                   >
                     <FadingImage />
                   </Canvas>
-                </div>
+                </div> */}
               </div>
               <Hero />
             </>
@@ -277,7 +277,7 @@ export default function Login() {
             )}
           </div>
           {forgotPassword && (
-            <div className="w-5/6 lg:w-1/3  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-purple-700 to-purple-950 bg-opacity-50 rounded  px-5 py-6 z-[1605]">
+            <div className="w-5/6 lg:w-1/3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-purple-700 to-purple-950 bg-opacity-50 rounded  px-5 py-6 z-[1605]">
               <div className="space-y-10 flex flex-col justify-start">
                 <label className=" text-gray-100 text-2xl flex flex-row items-center">
                   <FaEnvelope className="mr-1 text-gray-100" />
