@@ -1,6 +1,7 @@
 import { Providers } from "@/common/redux/Provider";
 import "../styles/globals.css";
 import localFont from "next/font/local";
+import Script from "next/script";
 
 export const metadata = {
   viewport: "width=device-width, initial-scale=1",
@@ -61,6 +62,18 @@ export default function RootLayout({
       <body className={`${cocosharp.variable}`}>
         <Providers>{children}</Providers>
       </body>
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-TKFVWD1KMR"
+      />
+      <Script strategy="afterInteractive" id="google-analytics">
+        {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TKFVWD1KMR');
+          `}
+      </Script>
     </html>
   );
 }

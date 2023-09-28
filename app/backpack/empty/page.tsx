@@ -57,8 +57,8 @@ export default function BackpackEmpty() {
           </Link>
         )}
         {!hasImage && (
-          <div className="lg:w-full w-full flex flex-col lg:flex-row mx-auto from-zinc-900 to-purple-900 bg-gradient-to-br">
-            <div className="max-h-screen w-full flex items-center relative mt-[122px] lg:mt-10">
+          <div className="lg:w-full min-h-screen w-full flex flex-col justify lg:flex-row lg:items-center mx-auto from-zinc-900 to-purple-900 bg-gradient-to-br">
+            <div className="h-full w-full flex items-center relative mt-[122px] lg:mt-10">
               <div className="absolute bottom-6 left-24 bg-purple-400 hue-rotate-[45] w-16 h-16 rounded-full bg-opacity-0 lg:bg-opacity-50" />
               <div className="absolute bottom-24 left-12 bg-purple-500 hue-rotate-30 w-12 h-12 rounded-full bg-opacity-0 lg:bg-opacity-50" />
               <div className="flex flex-col justify-evenly h-[40vh] w-[90vw] lg:w-[45vw] pl-[4vw] pr-10 py-5 lg:py-10 lg:pr-12 bg-purple-900 rounded-r-full drop-shadow-md shadow-black">

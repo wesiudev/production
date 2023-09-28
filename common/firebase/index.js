@@ -1,9 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {
-  GoogleAuthProvider,
-  getAuth,
-  sendEmailVerification,
-} from "firebase/auth";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
 import {
   getFirestore,
   collection,
@@ -16,8 +12,6 @@ import {
   updateDoc,
   doc,
   arrayUnion,
-  startAt,
-  endAt,
 } from "firebase/firestore/lite";
 import { getStorage } from "firebase/storage";
 

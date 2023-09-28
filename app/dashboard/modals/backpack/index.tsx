@@ -50,8 +50,14 @@ export const BackpackModal = ({ images }: DocumentData) => {
       </div>
       <div className="mt-2 flex flex-col bg-purple-900 rounded-md text-gray-100 p-5">
         {!images.length ? (
-          <div className="text-2xl text-gray-400 mt-1 mb-4 min-h-[30vh] flex items-center justify-center text-center">
+          <div className="text-2xl text-gray-400 mt-1 mb-4 min-h-[30vh] flex items-center justify-center text-center flex-col">
             Your backpack is empty
+            <Link
+              href="/backpack/empty/"
+              className="p-3 text-center bg-green-500 text-white mt-6 rounded-md w-max mx-auto"
+            >
+              Generate your first image
+            </Link>
           </div>
         ) : (
           <div className="grid grid-rows sm:grid-cols-2 gap-x-3">
