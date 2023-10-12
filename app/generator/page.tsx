@@ -29,12 +29,12 @@ export default function Generator() {
           description="You can render an image by writing a description for our generator."
           destination="render-from-text"
         />
-        <InterfaceBlock
+        {/* <InterfaceBlock
           title="Render image with Prompter"
           Icon={TbPrompt}
           description="Use prompter to render images by describing details step by step."
           destination="render-with-prompter"
-        />
+        /> */}
       </div>
     </div>
   );

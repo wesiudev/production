@@ -141,11 +141,11 @@ export default function Login() {
                   <FaArrowCircleUp className="h-12 w-12 text-white" />
                   <span className="mt-3">Hover over to see more</span>
                 </div> */}
-                <Link href="/">
-                  <div className="absolute m-10 text-gray-100 text-xl z-[1502]">
-                    decocanva
-                  </div>
-                </Link>
+
+                <div className="absolute m-10 text-gray-100 text-xl z-[1502]">
+                  decocanva
+                </div>
+
                 {/* <div className="absolute left-[50%] -translate-x-[50%] top-[50%] -translate-y-[50%] h-[70vh] w-[70vh] z-[1500] scale-100 hover:scale-110 sm:opacity-50 hover:opacity-100 duration-150">
                   <Canvas
                     style={{

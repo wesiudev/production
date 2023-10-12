@@ -29,20 +29,20 @@ export default function Header() {
               <FaPhone className="h-6 w-6 sm:mr-3 sm:hidden" />
               <span> Contact</span>
             </Link>
-            <Link
+            {/* <Link
               href=""
               className="flex sm:flex-row flex-col  items-center justify-center hover:bg-purple-700 w-full h-full sm:w-max sm:px-12"
             >
               <FaImages className="h-6 w-6 sm:mr-3 sm:hidden" />
               <span>Browse</span>
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               href=""
               className="flex sm:flex-row flex-col  items-center justify-center hover:bg-purple-700 w-full h-full sm:w-max sm:px-12"
             >
               <FaBlog className="h-6 w-6 sm:mr-3 sm:hidden" />
               <span>Blog</span>
-            </Link>
+            </Link> */}
           </div>
           <div className="cursor-pointer flex flex-row justify-center items-center">
             <Link href="/auth">
