@@ -206,11 +206,7 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
                       alt={item.h1 + " image by decocanva team"}
                       className="rounded-xl drop-shadow-md  shadow-black w-full aspect-square"
                     />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/assets/images/home_page_images/Connect_with_inspiring_people.png"
-                      alt=""
-                    />
+
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="../../public/assets/images/home_page_images/Connect_with_inspiring_people.png"
