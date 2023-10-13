@@ -1,13 +1,12 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: any = {
   images: [],
-  loadingImages: true,
-  isFetching:false,
+  imagesLoading: true,
+  isFetching: false,
   browseImages: [],
-  randomImages:[],
-  currentOpen: ""
+  randomImages: [],
+  currentOpen: "",
 };
 
 export const imagesSlice = createSlice({
@@ -15,33 +14,42 @@ export const imagesSlice = createSlice({
   initialState,
   reducers: {
     setLimit: (state, action) => {
-      state.limit = action.payload
+      state.limit = action.payload;
     },
     addImagesToArray: (state, action) => {
-      state.images = [...state.images, action.payload]
+      state.images = [...state.images, action.payload];
     },
     setFetching: (state, action) => {
-      state.isFetching = action.payload
+      state.isFetching = action.payload;
     },
     setImages: (state, action) => {
-      state.images = action.payload
-      state.loadingImages = false
+      state.images = action.payload;
+      state.imagesLoading = false;
     },
     pushToImages: (state, action) => {
-      state.images.unshift(action.payload)
+      state.images.unshift(action.payload);
     },
     setBrowseImages: (state, action) => {
-      state.browseImages = action.payload
+      state.browseImages = action.payload;
     },
     setCurrentOpen: (state, action) => {
-      state.currentOpen = action.payload
+      state.currentOpen = action.payload;
     },
     clearImages: (state, action) => {
-      state.images = []
+      state.images = [];
     },
   },
 });
 
-export const { setImages, clearImages, setLimit,setBrowseImages, setCurrentOpen, setFetching,  addImagesToArray, pushToImages } = imagesSlice.actions;
+export const {
+  setImages,
+  clearImages,
+  setLimit,
+  setBrowseImages,
+  setCurrentOpen,
+  setFetching,
+  addImagesToArray,
+  pushToImages,
+} = imagesSlice.actions;
 
 export default imagesSlice.reducer;
