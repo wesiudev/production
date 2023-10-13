@@ -2,7 +2,7 @@ import Link from "next/link";
 import Header from "../components/header";
 import Hero from "../auth/hero/Hero";
 import { Accents } from "../components/accents/accents";
-import Capture_inspiration_with_Technology_of_Decocanva from "/assets/images/home_page_images/Capture_inspiration_with_Technology_of_Decocanva.png";
+import Capture_inspiration_with_Technology_of_Decocanva from "@/public/assets/images/home_page_images/Capture_inspiration_with_Technology_of_Decocanva.png";
 import Image from "next/image";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
