@@ -2,7 +2,7 @@ import Link from "next/link";
 import Header from "../components/header";
 import Hero from "../auth/hero/Hero";
 import { Accents } from "../components/accents/accents";
-import Capture_inspiration_with_Technology_of_Decocanva from "@/public/assets/images/home_page_images/Capture_inspiration_with_Technology_of_Decocanva.png";
+
 import Image from "next/image";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
@@ -12,7 +12,7 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
   const dictionary = await getDictionary(params.lang);
   const sectionWithImages = [
     {
-      src: Capture_inspiration_with_Technology_of_Decocanva,
+      src: "/assets/images/home_page_images/Capture_inspiration_with_Technology_of_Decocanva.png",
       h1: dictionary.Homepage.capture_h1,
       h2: dictionary.Homepage.capture_h2,
       p: dictionary.Homepage.capture_p,
@@ -76,17 +76,17 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
   ];
   const sectionWithIndividuals = [
     {
-      src: "./assets/images/home_page_images/decocanva_use_case_art.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_art.png",
       h1: dictionary.Homepage.artists_h1,
       h2: dictionary.Homepage.artists_h2,
     },
     {
-      src: "../../public/assets/images/home_page_images/decocanva_use_case_design.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_design.png",
       h1: dictionary.Homepage.designers_h1,
       h2: dictionary.Homepage.designers_h2,
     },
     {
-      src: "./assets/images/home_page_images/decocanva_use_case_educators.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_educators.png",
       h1: dictionary.Homepage.educators_h1,
       h2: dictionary.Homepage.educators_h2,
     },
@@ -121,7 +121,7 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
       h2: dictionary.Homepage.entrepreneurs_h2,
     },
     {
-      src: "",
+      src: "/assets/images/home_page_images/decocanva_use_case_everyone.png",
       h1: dictionary.Homepage.everyone_h1,
       h2: dictionary.Homepage.everyone_h2,
     },
@@ -205,12 +205,6 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
                       height={512}
                       alt={item.h1 + " image by decocanva team"}
                       className="rounded-xl drop-shadow-md  shadow-black w-full aspect-square"
-                    />
-
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="../../public/assets/images/home_page_images/Connect_with_inspiring_people.png"
-                      alt=""
                     />
                   </div>
                 </div>
