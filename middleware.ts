@@ -20,8 +20,11 @@ function getLocale(request: NextRequest): string | undefined {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const PUBLIC_FILE = /\.(.*)$/;
-  //to take the files from the publisc folder
+  const PUBLIC_FILE = /^\/public\//;
+  //to take the files from the public folder
+  if (PUBLIC_FILE.test(request.nextUrl.pathname)) {
+    return;
+  }
   if (PUBLIC_FILE.test(request.nextUrl.pathname)) {
     return;
   }
@@ -54,6 +57,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Matcher ignoring `/_next/` and `/api/`
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/public|_next/image|assets|favicon.ico|sw.js).*)",
+  ],
 };
