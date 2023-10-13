@@ -6,18 +6,9 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "firebasestorage.googleapis.com",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "lh3.googleusercontent.com",
-        port: "",
-      },
-    ],
+    loader: "imgix",
+    path: "/",
+    domains: ["firebasestorage.googleapis.com", "lh3.googleusercontent.com"],
   },
   assetPrefix: "",
 };
