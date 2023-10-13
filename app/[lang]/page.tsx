@@ -3,16 +3,6 @@ import Header from "../components/header";
 import Hero from "../auth/hero/Hero";
 import { Accents } from "../components/accents/accents";
 
-import decocanva_use_case_art from "../../public/assets/images/home_page_images/decocanva_use_case_art.png";
-import decocanva_use_case_design from "../../public/assets/images/home_page_images/decocanva_use_case_design.png";
-import decocanva_use_case_educators from "../../public/assets/images/home_page_images/decocanva_use_case_educators.png";
-import decocanva_use_case_event_planners from "../../public/assets/images/home_page_images/decocanva_use_case_event_planners.png";
-import decocanva_use_case_everyone from "../../public/assets/images/home_page_images/decocanva_use_case_everyone.png";
-import decocanva_use_case_home_design from "../../public/assets/images/home_page_images/decocanva_use_case_home_design.png";
-import decocanva_use_case_influencers from "../../public/assets/images/home_page_images/decocanva_use_case_influencers.png";
-import decocanva_use_case_musicans from "../../public/assets/images/home_page_images/decocanva_use_case_musicans.png";
-import decocanva_use_case_students from "../../public/assets/images/home_page_images/decocanva_use_case_students.png";
-import decocanva_use_case_entrepreneurs from "../../public/assets/images/home_page_images/decocanva_use_case_workers.png";
 import Image from "next/image";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
@@ -22,25 +12,25 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
   const dictionary = await getDictionary(params.lang);
   const sectionWithImages = [
     {
-      src: "../../public/assets/images/home_page_images/Capture_inspiration_with_Technology_of_Decocanva.png",
+      src: "/assets/images/home_page_images/Capture_inspiration_with_Technology_of_Decocanva.png",
       h1: dictionary.Homepage.capture_h1,
       h2: dictionary.Homepage.capture_h2,
       p: dictionary.Homepage.capture_p,
     },
     {
-      src: "../../public/assets/images/home_page_images/Connect_with_inspiring_people.png",
+      src: "/assets/images/home_page_images/Connect_with_inspiring_people.png",
       h1: dictionary.Homepage.connect_h1,
       h2: dictionary.Homepage.connect_h2,
       p: dictionary.Homepage.connect_p,
     },
     {
-      src: "../../public/assets/images/home_page_images/Create_stunning_visuals_from_your_ideas.png",
+      src: "/assets/images/home_page_images/Create_stunning_visuals_from_your_ideas.png",
       h1: dictionary.Homepage.create_h1,
       h2: dictionary.Homepage.create_h2,
       p: dictionary.Homepage.create_p,
     },
     {
-      src: "../../public/assets/images/home_page_images/Explore_your_creativity_with_Decocanva.png",
+      src: "/assets/images/home_page_images/Explore_your_creativity_with_Decocanva.png",
       h1: dictionary.Homepage.explore_h1,
       h2: dictionary.Homepage.explore_h2,
       p: dictionary.Homepage.explore_p,
@@ -86,47 +76,47 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
   ];
   const sectionWithIndividuals = [
     {
-      src: "../../public/assets/images/home_page_images/decocanva_use_case_art.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_art.png",
       h1: dictionary.Homepage.artists_h1,
       h2: dictionary.Homepage.artists_h2,
     },
     {
-      src: "../../public/assets/images/home_page_images/decocanva_use_case_design.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_design.png",
       h1: dictionary.Homepage.designers_h1,
       h2: dictionary.Homepage.designers_h2,
     },
     {
-      src: "../../public/assets/images/home_page_images/decocanva_use_case_educators.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_educators.png",
       h1: dictionary.Homepage.educators_h1,
       h2: dictionary.Homepage.educators_h2,
     },
     {
-      src: "../../public/assets/images/home_page_images/decocanva_use_case_students.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_students.png",
       h1: dictionary.Homepage.students_h1,
       h2: dictionary.Homepage.students_h2,
     },
     {
-      src: "../../public/assets/images/home_page_images/decocanva_use_case_event_planners.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_event_planners.png",
       h1: dictionary.Homepage.event_planners_h1,
       h2: dictionary.Homepage.event_planners_h2,
     },
     {
-      src: "../../public/assets/images/home_page_images/decocanva_use_case_influencers.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_influencers.png",
       h1: dictionary.Homepage.influencers_h1,
       h2: dictionary.Homepage.influencers_h2,
     },
     {
-      src: "../../public/assets/images/home_page_images/decocanva_use_case_musicans.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_musicans.png",
       h1: dictionary.Homepage.writers_musicans_h1,
       h2: dictionary.Homepage.writers_musicans_h2,
     },
     {
-      src: "../../public/assets/images/home_page_images/decocanva_use_case_home_design.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_home_design.png",
       h1: dictionary.Homepage.home_decor_h1,
       h2: dictionary.Homepage.home_decor_h2,
     },
     {
-      src: "../../public/assets/images/home_page_images/decocanva_use_case_workers.png",
+      src: "/assets/images/home_page_images/decocanva_use_case_workers.png",
       h1: dictionary.Homepage.entrepreneurs_h1,
       h2: dictionary.Homepage.entrepreneurs_h2,
     },
@@ -227,7 +217,7 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
                 {dictionary.Homepage.unleash_h2}
               </h2>
               <Image
-                src="../../public/assets/images/home_page_images/decocanva_main_image.png"
+                src="/assets/images/home_page_images/decocanva_main_image.png"
                 width={1024}
                 height={1024}
                 alt="Unleash your creativity and transform your ideas into stunning
@@ -235,7 +225,7 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
                 className="rounded-xl drop-shadow-md  shadow-black w-full h-max block lg:hidden"
               />
               <Image
-                src="../../public/assets/images/home_page_images/playful_characters.png"
+                src="/assets/images/home_page_images/playful_characters.png"
                 width={1024}
                 height={1024}
                 alt="Unleash your creativity and transform your ideas into stunning
