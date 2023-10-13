@@ -45,7 +45,7 @@
     "merge-images": "^2.0.0",
     "moment": "^2.29.4",
     "negotiator": "^0.6.3",
-    "next": "13.2.4",
+    "next": "13.5.4",
     "next-sitemap": "^4.2.3",
     "next-videos": "1.4.1",
     "node-merge-images": "^1.0.0",
