@@ -1,3 +1,5 @@
+const withVideos = require("next-videos");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -17,6 +19,7 @@ const nextConfig = {
       },
     ],
   },
+  assetPrefix: "",
 };
 
-module.exports = nextConfig;
+module.exports = withVideos(nextConfig);

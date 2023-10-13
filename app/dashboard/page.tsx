@@ -35,13 +35,6 @@ export default function Dashboard() {
             <div className="w-full text-2xl lg:text-3xl text-gray-100">
               <div className="flex flex-row items-center justify-between w-full bg-purple-900 p-5 rounded-md">
                 <div className="flex flex-row items-center not-italic font-bold">
-                  <Link
-                    href="https://donate.stripe.com/test_8wM00Gget5S057G144"
-                    className="w-full text-center bg-gray-500 text-white text-3xl py-6 flex items-center justify-center"
-                  >
-                    <FaArrowLeft className="mr-2" />
-                    Pay
-                  </Link>
                   <FaUser className="mr-1 text-2xl" />
 
                   {userData?.displayName

@@ -1,0 +1,48 @@
+{
+  "name": {
+    "en": "Decocanva",
+    "fr": "Decocanva",
+    "pl": "Decocanva",
+    "cs": "Decocanva",
+    "nl": "Decocanva",
+    "de": "Decocanva"
+  },
+  "description": {
+    "en": "An AI-powered image generator using DALL-E AI for high-resolution, high-quality image creations.",
+    "fr": "Un générateur d'images alimenté par l'IA utilisant DALL-E AI pour des créations d'images haute résolution et de haute qualité.",
+    "pl": "Generator obrazów zasilany sztuczną inteligencją przy użyciu DALL-E AI do tworzenia obrazów o wysokiej rozdzielczości i wysokiej jakości.",
+    "cs": "Generátor obrázků poháněný umělou inteligencí pomocí DALL-E AI pro vytváření obrázků ve vysokém rozlišení a vysoké kvality.",
+    "nl": "Een door AI aangedreven afbeeldingsgenerator met behulp van DALL-E AI voor hoogwaardige afbeeldingscreaties met hoge resolutie.",
+    "de": "Ein KI-gesteuerter Bildgenerator unter Verwendung von DALL-E AI für hochauflösende und qualitativ hochwertige Bildkreationen."
+  },
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "locales": {
+    "fr": {
+      "name": "Decocanva",
+      "description": "Un générateur d'images alimenté par l'IA utilisant DALL-E AI pour des créations d'images haute résolution et de haute qualité."
+    },
+    "pl": {
+      "name": "Decocanva",
+      "description": "Generator obrazów zasilany sztuczną inteligencją przy użyciu DALL-E AI do tworzenia obrazów o wysokiej rozdzielczości i wysokiej jakości."
+    },
+    "cs": {
+      "name": "Decocanva",
+      "description": "Generátor obrázků poháněný umělou inteligencí pomocí DALL-E AI pro vytváření obrázků ve vysokém rozlišení a vysoké kvality."
+    },
+    "nl": {
+      "name": "Decocanva",
+      "description": "Een door AI aangedreven afbeeldingsgenerator met behulp van DALL-E AI voor hoogwaardige afbeeldingscreaties met hoge resolutie."
+    },
+    "de": {
+      "name": "Decocanva",
+      "description": "Ein KI-gesteuerter Bildgenerator unter Verwendung von DALL-E AI für hochauflösende und qualitativ hochwertige Bildkreationen."
+    }
+  },
+  "domain": "decocanva.com"
+}
