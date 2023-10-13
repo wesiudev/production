@@ -1,11 +1,20 @@
-//READY TO DEPLOY
+"use client";
 
 import { FaBlog, FaDownload, FaImages, FaPhone } from "react-icons/fa";
 import Link from "next/link";
+import Faq from "../faq";
+import { useState } from "react";
 
-export default function Header() {
+export default function Header({ dictionary }: { dictionary: any }) {
+  const [isFaqOpen, setFaqOpen] = useState<boolean>(false);
   return (
     <header className="bg-gradient-to-r from-zinc-900 via-white-900 to-purple-800 fixed left-0 top-0 w-full z-[1000] font-sans">
+      <Faq
+        faqs={dictionary.Faq}
+        isFaqOpen={isFaqOpen}
+        setFaqOpen={setFaqOpen}
+        dictionary={dictionary}
+      />
       <div className="w-[90vw] mx-auto flex flex-row justify-between py-3 sm:py-0">
         <div className="flex flex-row w-max h-max my-auto">
           <Link
@@ -29,11 +38,6 @@ export default function Header() {
                 <span className="text-green-500 animate-pulse">COMMUNITY</span>
               ),
             },
-            {
-              href: "/faq",
-              icon: <FaImages className="h-6 w-6 sm:mr-3 sm:hidden" />,
-              text: "FAQ",
-            },
           ].map(({ href, icon, text }) => (
             <Link
               key={href}
@@ -44,12 +48,21 @@ export default function Header() {
               <span>{text}</span>
             </Link>
           ))}
+          <button
+            onClick={() => setFaqOpen(true)}
+            className="flex sm:flex-row flex-col items-center justify-center hover:bg-purple-700 w-full h-full sm:w-max sm:px-12"
+          >
+            <FaImages className="h-6 w-6 sm:mr-3 sm:hidden" />
+            <span>FAQ</span>
+          </button>
         </div>
         <div className="cursor-pointer flex flex-row justify-center items-center">
           <Link href="/ai-generator-download">
             <div className="flex flex-row items-center bg-green-500 border-green-800 border-px rounded-lg px-3 py-2">
               <FaDownload className="mr-2 h-5 w-5 text-gray-50" />
-              <span className="text-gray-50 italic font-light">Download</span>
+              <span className="text-gray-50 italic font-light">
+                {dictionary.Header.download}
+              </span>
             </div>
           </Link>
         </div>

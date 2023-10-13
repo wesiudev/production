@@ -1,7 +1,10 @@
 {
   "Header": {
     "community": "SPOŁECZNOŚĆ",
-    "download": "Pobierz"
+    "download": "Pobierz",
+    "back": "Powrót",
+    "question": "Pytanie",
+    "answer": "Odpowiedź"
   },
 
   "Homepage": {

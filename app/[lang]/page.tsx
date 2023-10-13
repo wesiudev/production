@@ -130,7 +130,7 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
     <div className="relative h-full w-full bg-gradient-to-br from-zinc-900 via-white-900 to-purple-900 ">
       <Hero />
       <main className="font-sans overflow-x-hidden relative flex items-center min-h-screen  py-2 px-3 lg:px-0">
-        <Header />
+        <Header dictionary={dictionary} />
         <Accents />
         <div className="justify-evenly h-[40vh] lg:mt-0 lg:h-max w-screen mx-0 sm:mx-auto flex flex-col sm:w-4/5 lg:w-3/4">
           <h1 className="z-30 ">

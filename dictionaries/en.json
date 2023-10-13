@@ -1,7 +1,10 @@
 {
   "Header": {
     "community": "COMMUNITY",
-    "download": "Download"
+    "download": "Download",
+    "back": "Back",
+    "question": "Question",
+    "answer": "Answer"
   },
   "Homepage": {
     "welcome": "Welcome to",

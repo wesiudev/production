@@ -1,7 +1,10 @@
 {
   "Header": {
     "community": "SPOLEČNOST",
-    "download": "Stáhnout"
+    "download": "Stáhnout",
+    "back": "Zpět",
+    "question": "Otázka",
+    "answer": "Odpověď"
   },
   "Homepage": {
     "welcome": "Vítejte v",

@@ -1,13 +1,11 @@
-header - CHECK! 13.10.2023 00:47
+-header - CHECK! 13.10.2023 00:47
+remember
+a) /ai-generator-download
+b) /faq
+c) /blog
+d) /community
 
-- TRANSLATIONS
-  a) /ai-generator-download
-  b) /faq
-  c) /blog
-  d) /community
-  home page -
-  a) layout - CHECK! 13.10.2023 12:30
-  b) FAQ schema.org for locales like CS, EN, PL, NL, DE CHECK! 13.10.2023 12:30
-  c) manifest.json for locales like CS, EN, PL, NL, DE CHECK! 13.10.2023 12:30
-  d)
-  e)
+-home - CHECK! 13.10.2023 22:50
+a) layout - CHECK! 13.10.2023 12:30
+b) FAQ schema.org for locales like CS, EN, PL, NL, DE CHECK! 13.10.2023 12:30
+c) manifest.json for locales like CS, EN, PL, NL, DE CHECK! 13.10.2023 12:30

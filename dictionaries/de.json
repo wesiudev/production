@@ -1,7 +1,10 @@
 {
   "Header": {
     "community": "GEMEINSCHAFT",
-    "download": "Herunterladen"
+    "download": "Herunterladen",
+    "back": "Zurück",
+    "question": "Frage",
+    "answer": "Antwort"
   },
   "Seo": {
     "title": "Decocanva | Image Generator AI Dall-E | Kostenlose App herunterladen",

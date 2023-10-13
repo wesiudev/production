@@ -1,7 +1,10 @@
 {
   "Header": {
     "community": "GEMEENSCHAP",
-    "download": "Downloaden"
+    "download": "Downloaden",
+    "back": "Terug",
+    "question": "Vraag",
+    "answer": "Antwoord"
   },
   "Homepage": {
     "welcome": "Welkom bij",
