@@ -9,7 +9,6 @@ import Explore_your_creativity_with_Decocanva from "@/public/assets/images/home_
 import decocanva_main_image from "@/public/assets/images/home_page_images/decocanva_main_image.png";
 import playful_characters from "@/public/assets/images/home_page_images/playful_characters.png";
 import decocanva_use_case_art from "@/public/assets/images/home_page_images/decocanva_use_case_art.png";
-import decocanva_use_case_workers from "@/public/assets/images/home_page_images/decocanva_use_case_workers.png";
 import decocanva_use_case_design from "@/public/assets/images/home_page_images/decocanva_use_case_design.png";
 import decocanva_use_case_educators from "@/public/assets/images/home_page_images/decocanva_use_case_educators.png";
 import decocanva_use_case_event_planners from "@/public/assets/images/home_page_images/decocanva_use_case_event_planners.png";
@@ -22,7 +21,7 @@ import decocanva_use_case_entrepreneurs from "@/public/assets/images/home_page_i
 import Image from "next/image";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
-import { FaArrowLeft, FaArrowRight, FaMagic } from "react-icons/fa";
+import { FaMagic } from "react-icons/fa";
 import VerticalScroll from "../components/vertical_scroll";
 export default async function Home({ params }: { params: { lang: Locale } }) {
   const dictionary = await getDictionary(params.lang);

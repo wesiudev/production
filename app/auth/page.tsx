@@ -11,12 +11,11 @@ import { provider, auth } from "../../common/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import GoogleAuthButtons from "./GoogleAuth";
 import Hero from "./hero/Hero";
-import { Canvas } from "@react-three/fiber";
-import FadingImage from "./hero/Images";
+
 import { redirect } from "next/navigation";
 import { useState } from "react";
-import Link from "next/link";
-import { FaArrowCircleUp, FaEnvelope, FaKey } from "react-icons/fa";
+
+import { FaEnvelope, FaKey } from "react-icons/fa";
 import Loading from "./loading";
 
 export default function Login() {
