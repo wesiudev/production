@@ -74,7 +74,8 @@
     "typescript": "5.0.2",
     "typewriter-effect": "^2.19.0",
     "uniqid": "^5.4.0",
-    "urlencode": "^1.1.0"
+    "urlencode": "^1.1.0",
+    "webpack": "^5.88.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.3.0",
