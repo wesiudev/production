@@ -32,7 +32,6 @@ export function middleware(request: NextRequest) {
       "/manifest.json",
       "/favicon.ico",
       "/public/assets/*",
-      "/public/**/*",
       // Your other files in `public`
     ].includes(pathname)
   )
@@ -57,6 +56,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/public|_ipx|_next/_ipx|_ipx/w_640,q_75|_next/_ipx/w_640,q_75|_next/image|assets|favicon.ico|sw.js).*)",
+    "/((?!api|_next/static|_next/public/assets|_ipx|_next/_ipx|_ipx/w_640,q_75|_next/_ipx/w_640,q_75|_next/image|assets|favicon.ico|sw.js).*)",
   ],
 };
