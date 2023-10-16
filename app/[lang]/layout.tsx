@@ -42,10 +42,14 @@ export async function generateMetadata({
       "@type": "FAQPage",
       mainEntity: faqQuestions,
     };
+
     return {
       title,
       description,
       keywords,
+      verification: {
+        google: "google85185d3abec28326.html",
+      },
       openGraph: {
         type: "website",
         url: "https://decocanva.com",
