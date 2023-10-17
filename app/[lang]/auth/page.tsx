@@ -26,10 +26,8 @@ export default function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  if (loading) {
-    return <Loading />;
-  }
-  if (user && !loading) {
+
+  if (user) {
     redirect("/en/dashboard");
   }
   function handleLogin() {

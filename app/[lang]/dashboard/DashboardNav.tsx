@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { auth } from "@/common/firebase";
 import { logout } from "@/common/redux/slices/userSlice";
 import { redirect } from "next/navigation";
+import { useAuthState } from "react-firebase-hooks/auth";
+import Loading from "./loading";
 
 export default function DashboardNav() {
   const { userData } = useUserData();
@@ -18,10 +20,7 @@ export default function DashboardNav() {
       })
       .catch((error) => {});
   }
-  const user = userData?.user;
-  if (!user) {
-    redirect("/en/auth");
-  }
+
   return (
     <>
       <header className="bg-gradient-to-r from-zinc-900 via-white-900 to-purple-800 fixed left-0 top-0 w-full z-[1000] font-sans">
@@ -31,7 +30,9 @@ export default function DashboardNav() {
             <div className="opacity-80 h-4 w-1 bg-purple-800 -rotate-45 rounded-sm" />
           </div>
           <div className="flex flex-row items-center justify-between w-full">
-            <div className="ml-3 text-2xl sm:text-3xl">Dashboard</div>
+            <div className="ml-3 text-2xl sm:text-3xl text-white">
+              {userData?.username}
+            </div>
             {userData && (
               <Link
                 href="/auth"
