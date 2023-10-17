@@ -1,13 +1,13 @@
 import Link from "next/link";
-import Header from "../components/header";
+import Header from "../components/main/header";
 import Hero from "../auth/hero/Hero";
-import { Accents } from "../components/accents/accents";
+import { Accents } from "../components/main/accents/accents";
 
 import Image from "next/image";
 import { Locale } from "@/i18n-config";
 import { getDictionary } from "@/get-dictionary";
 import { FaMagic } from "react-icons/fa";
-import VerticalScroll from "../components/vertical_scroll";
+import VerticalScroll from "../components/main/vertical_scroll";
 export default async function Home({ params }: { params: { lang: Locale } }) {
   const dictionary = await getDictionary(params.lang);
   const sectionWithImages = [

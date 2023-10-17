@@ -5,12 +5,11 @@ import { Locale, i18n } from "@/i18n-config";
 import "@/styles/globals.css";
 import localFont from "next/font/local";
 import Script from "next/script";
+import { FAQPage, Question } from "schema-dts";
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
-
-import { FAQPage, Question } from "schema-dts";
 
 export async function generateMetadata({
   params,
