@@ -1,5 +1,7 @@
 "use client";
 
+import DashboardNav from "./DashboardNav";
+
 export default function Dashboard() {
   // const { images, userData, loading } = useUserData();
 
@@ -14,5 +16,9 @@ export default function Dashboard() {
   //   userData.accountLevel,
   //   userData.accountExperience
   // );
-  return <>abc</>;
+  return (
+    <div className="bg-gradient-to-br from-[#202020] via-[#212121] to-[#222222]">
+      <DashboardNav />
+    </div>
+  );
 }
